@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Crossword rows="24" cols="17">
+    <Square row="0" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="IRRELIGIOSAS" direction="DOWN" position="RIGHT"/>
+        <Def2 text="TRIBUTO" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="1" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="0" col="2" type="DEFINITION_SQUARE">
+        <Def1 text="ADOBADO" direction="DOWN" position="RIGHT"/>
+        <Def2 text="MÁXIMAS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="3" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="0" col="4" type="DEFINITION_SQUARE">
+        <Def1 text="SOBRESALTARÉ" direction="DOWN" position="RIGHT"/>
+        <Def2 text="CIGÜE&#10;ÑAL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="5" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="0" col="6" type="DEFINITION_SQUARE">
+        <Def1 text="MAMÍFE-&#10;ROS PIN-&#10;NIPEDOS" direction="DOWN" position="RIGHT"/>
+        <Def2 text="TITANIO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="7" type="CHARACTER_SQUARE" text="F" text_play=""/>
+    <Square row="0" col="8" type="DEFINITION_SQUARE">
+        <Def1 text="ESTREGAR" direction="DOWN" position="RIGHT"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="0" col="9" type="CHARACTER_SQUARE" text="F" text_play=""/>
+    <Square row="0" col="10" type="DEFINITION_SQUARE">
+        <Def1 text="LEMOSÍN" direction="DOWN" position="RIGHT"/>
+        <Def2 text="DOBLE &#10;CURVA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="11" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="0" col="12" type="DEFINITION_SQUARE">
+        <Def1 text="CRIADA&#10;PRINCIPAL" direction="DOWN" position="RIGHT"/>
+        <Def2 text="RENTA&#10;ANUAL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="13" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="0" col="14" type="DEFINITION_SQUARE">
+        <Def1 text="BARCO&#10;DE&#10;LIMPIEZA" direction="DOWN" position="RIGHT"/>
+        <Def2 text="CAÑERÍA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="0" col="15" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="0" col="16" type="DEFINITION_SQUARE">
+        <Def1 text="OSTEN-&#10;TACIÓN.&#10;PL." direction="DOWN" position="BOTTOM"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="1" col="0" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="1" col="1" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="1" col="2" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="1" col="3" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="1" col="4" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="1" col="5" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="1" col="6" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="1" col="7" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="1" col="8" type="DEFINITION_SQUARE">
+        <Def1 text="EN AMÉ-&#10;RICA,&#10;ALCOBA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="QUEMARÍA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="1" col="9" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="1" col="10" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="1" col="11" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="1" col="12" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="1" col="13" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="1" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="1" col="15" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="1" col="16" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="2" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="MENOS-&#10;CABOS" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="COLORES" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="2" col="1" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="2" col="2" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="2" col="3" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="2" col="4" type="CHARACTER_SQUARE" text="J" text_play=""/>
+    <Square row="2" col="5" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="2" col="6" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="2" col="7" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="2" col="8" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="2" col="9" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="2" col="10" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="2" col="11" type="DEFINITION_SQUARE">
+        <Def1 text="RELATIVO&#10;AL NACI-&#10;MIENTO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="BUITRÓN" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="2" col="12" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="2" col="13" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="2" col="14" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="2" col="15" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="2" col="16" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="3" col="0" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="3" col="1" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="3" col="2" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="3" col="3" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="3" col="4" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="3" col="5" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="3" col="6" type="DEFINITION_SQUARE">
+        <Def1 text="CAPTADOR&#10;DE ONDAS" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ESTUVE&#10;PRESENTE" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="3" col="7" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="3" col="8" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="3" col="9" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="3" col="10" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="3" col="11" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="3" col="12" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="3" col="13" type="DEFINITION_SQUARE">
+        <Def1 text="OFICIAL&#10;TURCO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="PER-&#10;FECTO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="3" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="3" col="15" type="CHARACTER_SQUARE" text="G" text_play=""/>
+    <Square row="3" col="16" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="4" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="DE ESTE&#10;MODO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ATREVI-&#10;MIENTOS" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="4" col="1" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="4" col="2" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="4" col="3" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="4" col="4" type="DEFINITION_SQUARE">
+        <Def1 text="TABERNA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="FANTÁS-&#10;TICO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="4" col="5" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="4" col="6" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="4" col="7" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="4" col="8" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="4" col="9" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="4" col="10" type="DEFINITION_SQUARE">
+        <Def1 text="ACERTAR" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="BURLA&#10;FINA Y DI-&#10;SIMULADA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="4" col="11" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="4" col="12" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="4" col="13" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="4" col="14" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="4" col="15" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="4" col="16" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="5" col="0" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="5" col="1" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="5" col="2" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="5" col="3" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="5" col="4" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="5" col="5" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="5" col="6" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="5" col="7" type="DEFINITION_SQUARE">
+        <Def1 text="TORNA-&#10;SOLADO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="SOM-&#10;BRÍOS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="5" col="8" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="5" col="9" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="5" col="10" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="5" col="11" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="5" col="12" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="5" col="13" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="5" col="14" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="5" col="15" type="DEFINITION_SQUARE">
+        <Def1 text="500" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="OPERA-&#10;CIÓN ARIT-&#10;MÉTICA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="5" col="16" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="6" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="RASPÉ" direction="RIGHT" position="BOTTOM"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="6" col="1" type="DEFINITION_SQUARE">
+        <Def1 text="CASCO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="QUE-&#10;REOS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="6" col="2" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="6" col="3" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="6" col="4" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="6" col="5" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="6" col="6" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="6" col="7" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="6" col="8" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="6" col="9" type="DEFINITION_SQUARE">
+        <Def1 text="DIOS&#10;EGIPCIO&#10;DEL SOL" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="TANTALIO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="6" col="10" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="6" col="11" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="6" col="12" type="DEFINITION_SQUARE">
+        <Def1 text="NOMBRE&#10;DE&#10;LETRA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="LOCAL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="6" col="13" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="6" col="14" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="6" col="15" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="6" col="16" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="7" col="0" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="7" col="1" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="7" col="2" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="7" col="3" type="DEFINITION_SQUARE">
+        <Def1 text="HONRA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="CENAGAL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="7" col="4" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="7" col="5" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="7" col="6" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="7" col="7" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="7" col="8" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="7" col="9" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="7" col="10" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="7" col="11" type="DEFINITION_SQUARE">
+        <Def1 text="MÁLAGA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="QUE &#10;ENTONA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="7" col="12" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="7" col="13" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="7" col="14" type="DEFINITION_SQUARE">
+        <Def1 text="EXISTE" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="BUFO-&#10;NADA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="7" col="15" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="7" col="16" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="8" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="ACUNA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="RARA" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="8" col="1" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="8" col="2" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="8" col="3" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="8" col="4" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="8" col="5" type="DEFINITION_SQUARE">
+        <Def1 text="ARAÑAS&#10;VENENO-&#10;SAS" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="PLANTA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="8" col="6" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="8" col="7" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="8" col="8" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="8" col="9" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="8" col="10" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="8" col="11" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="8" col="12" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="8" col="13" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="8" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="8" col="15" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="8" col="16" type="DEFINITION_SQUARE">
+        <Def1 text="PUNTO&#10;CURVO DE&#10;LAS CUA-&#10;DERNAS" direction="DOWN" position="BOTTOM"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="9" col="0" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="9" col="1" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="9" col="2" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="9" col="3" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="9" col="4" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="9" col="5" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="9" col="6" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="9" col="7" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="9" col="8" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="9" col="9" type="DEFINITION_SQUARE">
+        <Def1 text="HIJO DE&#10;APOLO Y&#10;CREUSA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="VELADAS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="9" col="10" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="9" col="11" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="9" col="12" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="9" col="13" type="DEFINITION_SQUARE">
+        <Def1 text="ABREV..&#10;SO-&#10;BRANTE" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="POEMAS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="9" col="14" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="9" col="15" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="9" col="16" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="10" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="FAMOSA&#10;TRAGEDIA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="RÍO DE&#10;CANTABRIA" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="10" col="1" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="10" col="2" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="10" col="3" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="10" col="4" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="10" col="5" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="10" col="6" type="DEFINITION_SQUARE">
+        <Def1 text="LOS QUE&#10;TOCAN EL&#10;ORGANO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="LABRE" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="10" col="7" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="10" col="8" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="10" col="9" type="CHARACTER_SQUARE" text="G" text_play=""/>
+    <Square row="10" col="10" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="10" col="11" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="10" col="12" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="10" col="13" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="10" col="14" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="10" col="15" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="10" col="16" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="11" col="0" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="11" col="1" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="11" col="2" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="11" col="3" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="11" col="4" type="DEFINITION_SQUARE">
+        <Def1 text="MASADA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="SOL-&#10;DADO&#10;RUSO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="11" col="5" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="11" col="6" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="11" col="7" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="11" col="8" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="11" col="9" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="11" col="10" type="DEFINITION_SQUARE">
+        <Def1 text="SANIES" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="REGIÓN DE&#10;IRLANDA&#10;DEL NORTE" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="11" col="11" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="11" col="12" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="11" col="13" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="11" col="14" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="11" col="15" type="DEFINITION_SQUARE">
+        <Def1 text="CAR-&#10;BONO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="PECUNA-&#10;RIO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="11" col="16" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="12" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="NUEVO&#10;TESTA-&#10;MENTO" direction="RIGHT" position="BOTTOM"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="12" col="1" type="DEFINITION_SQUARE">
+        <Def1 text="EXTRAER" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="FACULTAD&#10;DE HACER&#10;PRODIGIOS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="12" col="2" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="12" col="3" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="12" col="4" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="12" col="5" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="12" col="6" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="12" col="7" type="DEFINITION_SQUARE">
+        <Def1 text="OFUSCADO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ZARCILLOS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="12" col="8" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="12" col="9" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="12" col="10" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="12" col="11" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="12" col="12" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="12" col="13" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="12" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="12" col="15" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="12" col="16" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="13" col="0" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="13" col="1" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="13" col="2" type="DEFINITION_SQUARE">
+        <Def1 text="CHISPEA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="EL QUE &#10;COMBATE&#10;CON&#10;SAETAS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="13" col="3" type="CHARACTER_SQUARE" text="G" text_play=""/>
+    <Square row="13" col="4" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="13" col="5" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="13" col="6" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="13" col="7" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="13" col="8" type="DEFINITION_SQUARE">
+        <Def1 text="PELONA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="CONVER-&#10;TIDOS EN&#10;HUESO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="13" col="9" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="13" col="10" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="13" col="11" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="13" col="12" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="13" col="13" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="13" col="14" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="13" col="15" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="13" col="16" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="14" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="MAGOS-&#10;TASE" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="PINCHO" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="14" col="1" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="14" col="2" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="14" col="3" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="14" col="4" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="14" col="5" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="14" col="6" type="DEFINITION_SQUARE">
+        <Def1 text="EXPLORA-&#10;DOR&#10;INGLÉS" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="CRIOLLO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="14" col="7" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="14" col="8" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="14" col="9" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="14" col="10" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="14" col="11" type="DEFINITION_SQUARE">
+        <Def1 text="LIGAN" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ALBER-&#10;GUE" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="14" col="12" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="14" col="13" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="14" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="14" col="15" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="14" col="16" type="DEFINITION_SQUARE">
+        <Def1 text="NACIDA EN&#10;PUEBLA DE&#10;SANABRIA&#10;(ZAMORA)" direction="DOWN" position="BOTTOM"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="15" col="0" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="15" col="1" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="15" col="2" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="15" col="3" type="DEFINITION_SQUARE">
+        <Def1 text="SIGNO ZO-&#10;DIACAL" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ESTUA-&#10;RIOS" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="15" col="4" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="15" col="5" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="15" col="6" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="15" col="7" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="15" col="8" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="15" col="9" type="DEFINITION_SQUARE">
+        <Def1 text="CHE-&#10;QUES" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="NOCIVA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="15" col="10" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="15" col="11" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="15" col="12" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="15" col="13" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="15" col="14" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="15" col="15" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="15" col="16" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="16" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="COMER-&#10;CIALES" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="PORTAL" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="16" col="1" type="CHARACTER_SQUARE" text="M" text_play=""/>
+    <Square row="16" col="2" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="16" col="3" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="16" col="4" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="16" col="5" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="16" col="6" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="16" col="7" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="16" col="8" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="16" col="9" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="16" col="10" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="16" col="11" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="16" col="12" type="DEFINITION_SQUARE">
+        <Def1 text="NOMBRE&#10;DE MUJER" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="DESAFIAR" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="16" col="13" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="16" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="16" col="15" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="16" col="16" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="17" col="0" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="17" col="1" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="17" col="2" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="17" col="3" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="17" col="4" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="17" col="5" type="DEFINITION_SQUARE">
+        <Def1 text="ASENTIR&#10;POR COR-&#10;TESÍA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="NÚMERO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="17" col="6" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="17" col="7" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="17" col="8" type="CHARACTER_SQUARE" text="F" text_play=""/>
+    <Square row="17" col="9" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="17" col="10" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="17" col="11" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="17" col="12" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="17" col="13" type="DEFINITION_SQUARE">
+        <Def1 text="HIJO&#10;DE&#10;JACOB" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="HELADA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="17" col="14" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="17" col="15" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="17" col="16" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="18" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="CUELMO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ESTU-&#10;DIARÁ EN&#10;CENTRO&#10;DOCENTE" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="18" col="1" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="18" col="2" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="18" col="3" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="18" col="4" type="DEFINITION_SQUARE">
+        <Def1 text="TUBERCU-&#10;LOSIS PUL-&#10;MONAR" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ESPADA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="18" col="5" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="18" col="6" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="18" col="7" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="18" col="8" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="18" col="9" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="18" col="10" type="DEFINITION_SQUARE">
+        <Def1 text="DEJARÁ&#10;EN TES-&#10;TAMENTO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="BEBER" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="18" col="11" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="18" col="12" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="18" col="13" type="CHARACTER_SQUARE" text="G" text_play=""/>
+    <Square row="18" col="14" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="18" col="15" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="18" col="16" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="19" col="0" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="19" col="1" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="19" col="2" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="19" col="3" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="19" col="4" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="19" col="5" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="19" col="6" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="19" col="7" type="DEFINITION_SQUARE">
+        <Def1 text="EN COLOM-&#10;BIA, BOBO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="FERROCA-&#10;RRIL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="19" col="8" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="19" col="9" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="19" col="10" type="CHARACTER_SQUARE" text="P" text_play=""/>
+    <Square row="19" col="11" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="19" col="12" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="19" col="13" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="19" col="14" type="DEFINITION_SQUARE">
+        <Def1 text="FRIJOL&#10;MEXICANO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="CIUDAD DE&#10;MÁLAGA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="19" col="15" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="19" col="16" type="CHARACTER_SQUARE" text="B" text_play=""/>
+    <Square row="20" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="VOZ DE&#10;ARRULLO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="PLATA" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="20" col="1" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="20" col="2" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="20" col="3" type="DEFINITION_SQUARE">
+        <Def1 text="CÉNTIMO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="MALLA" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="20" col="4" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="20" col="5" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="20" col="6" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="20" col="7" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="20" col="8" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="20" col="9" type="CHARACTER_SQUARE" text="V" text_play=""/>
+    <Square row="20" col="10" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="20" col="11" type="DEFINITION_SQUARE">
+        <Def1 text="CERRO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="ORG. IN-&#10;TERNA-&#10;CIONAL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="20" col="12" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="20" col="13" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="20" col="14" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="20" col="15" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="20" col="16" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="21" col="0" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="21" col="1" type="CHARACTER_SQUARE" text="G" text_play=""/>
+    <Square row="21" col="2" type="DEFINITION_SQUARE">
+        <Def1 text="AVISO PA-&#10;RA HACER&#10;RECORDAR" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="TALIO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="21" col="3" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="21" col="4" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="21" col="5" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="21" col="6" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="21" col="7" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="21" col="8" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="21" col="9" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="21" col="10" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="21" col="11" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="21" col="12" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="21" col="13" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="21" col="14" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="21" col="15" type="DEFINITION_SQUARE">
+        <Def1 text="ESTE" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="SUFIJO&#10;QUÍMICO" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="21" col="16" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="22" col="0" type="DEFINITION_SQUARE">
+        <Def1 text="REPITA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="CONSOMÉ" direction="RIGHT" position="BOTTOM"/>
+    </Square>
+    <Square row="22" col="1" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="22" col="2" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="22" col="3" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="22" col="4" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="22" col="5" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="22" col="6" type="DEFINITION_SQUARE">
+        <Def1 text="RÍO&#10;DE LUGO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="VOCAL" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="22" col="7" type="CHARACTER_SQUARE" text="E" text_play=""/>
+    <Square row="22" col="8" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="22" col="9" type="DEFINITION_SQUARE">
+        <Def1 text="PREFIJO&#10;PRIVATIVO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="FORMA DE&#10;VENDAJE" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="22" col="10" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="22" col="11" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="22" col="12" type="DEFINITION_SQUARE">
+        <Def1 text="EL SER&#10;SUPREMO" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="CONJUN-&#10;CIÓN" direction="DOWN" position="BOTTOM"/>
+    </Square>
+    <Square row="22" col="13" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="22" col="14" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="22" col="15" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="22" col="16" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="23" col="0" type="CHARACTER_SQUARE" text="C" text_play=""/>
+    <Square row="23" col="1" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="23" col="2" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="23" col="3" type="CHARACTER_SQUARE" text="D" text_play=""/>
+    <Square row="23" col="4" type="CHARACTER_SQUARE" text="O" text_play=""/>
+    <Square row="23" col="5" type="DEFINITION_SQUARE">
+        <Def1 text="EDÚ-&#10;QUENLA" direction="RIGHT" position="RIGHT"/>
+        <Def2 text="" direction="NONE" position="NONE"/>
+    </Square>
+    <Square row="23" col="6" type="CHARACTER_SQUARE" text="I" text_play=""/>
+    <Square row="23" col="7" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="23" col="8" type="CHARACTER_SQUARE" text="S" text_play=""/>
+    <Square row="23" col="9" type="CHARACTER_SQUARE" text="T" text_play=""/>
+    <Square row="23" col="10" type="CHARACTER_SQUARE" text="R" text_play=""/>
+    <Square row="23" col="11" type="CHARACTER_SQUARE" text="U" text_play=""/>
+    <Square row="23" col="12" type="CHARACTER_SQUARE" text="Y" text_play=""/>
+    <Square row="23" col="13" type="CHARACTER_SQUARE" text="A" text_play=""/>
+    <Square row="23" col="14" type="CHARACTER_SQUARE" text="N" text_play=""/>
+    <Square row="23" col="15" type="CHARACTER_SQUARE" text="L" text_play=""/>
+    <Square row="23" col="16" type="CHARACTER_SQUARE" text="A" text_play=""/>
+</Crossword>

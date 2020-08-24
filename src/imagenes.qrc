@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/">
+      <file alias="new" >../extras/rc/new.png</file>
+      <file alias="load" >../extras/rc/load.png</file>
+      <file alias="save" >../extras/rc/save.png</file>
+      <file alias="solution" >../extras/rc/solution.png</file>
+      <file alias="play" >../extras/rc/play.png</file>
+      <file alias="exit" >../extras/rc/exit.png</file>
+      <file alias="splashscreen" >../extras/rc/splashscreen.jpg</file>
+      <file alias="cancel" >../extras/rc/cancel.png</file>
+      <file alias="ok" >../extras/rc/ok.png</file>
+      <file alias="previous" >../extras/rc/previous.png</file>
+      <file alias="next" >../extras/rc/next.png</file>
+      <file alias="white" >../extras/rc/background.png</file>
+      <file alias="black" >../extras/rc/background_black.png</file>
+      <file alias="white_left" >../extras/rc/background_left.png</file>
+      <file alias="white_right" >../extras/rc/background_right.png</file>
+      <file alias="white_down" >../extras/rc/background_down.png</file>
+      <file alias="white_up" >../extras/rc/background_up.png</file>
+      <file alias="white_left_up" >../extras/rc/background_right_down.png</file>
+      <file alias="white_left_down" >../extras/rc/background_right_down.png</file>
+      <file alias="white_right_up" >../extras/rc/background_right_down.png</file>
+      <file alias="white_right_down" >../extras/rc/background_right_down.png</file>
+      <file alias="white_sel" >../extras/rc/background_selected.png</file>
+      <file alias="white_left_sel" >../extras/rc/background_left.png</file>
+      <file alias="white_right_sel" >../extras/rc/background_right_selected.png</file>
+      <file alias="white_down_sel" >../extras/rc/background_down_selected.png</file>
+      <file alias="white_up_sel" >../extras/rc/background_up.png</file>
+      <file alias="white_left_up_sel" >../extras/rc/background_right_down.png</file>
+      <file alias="white_left_down_sel" >../extras/rc/background_right_down.png</file>
+      <file alias="white_right_up_sel" >../extras/rc/background_right_down.png</file>
+      <file alias="white_right_down_sel" >../extras/rc/background_right_down_selected.png</file>
+
+    </qresource>
+</RCC>

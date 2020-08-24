@@ -1,0 +1,1135 @@
+{
+	"crossword":
+	{
+		"description":
+		{
+			"title":"Lope de Vega",
+			"cols":	10,
+			"rows":	20,
+			"topic": "Lope de Vega",
+			"unit": 0
+		},
+		"content":
+		{	
+			"0":{
+					"0":
+					[	
+						{
+							"first_point":"right",
+							"direction": "down",
+							"def": "Obra",
+							"topic":true,
+							"short_def": "Obra",
+							"clue":[
+								"pista 1",
+								"pista 2"
+							],
+							"answer": [ "an", "ge","li", "ca"]
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "Brama el león",
+							"topic":false,
+							"short_def": "Brama (León)",
+							"answer": [ "ru", "ge"]
+							
+						}
+					],
+					"2":
+					[					
+						{
+							"first_point":"right",
+							"direction": "down",
+							"def": "Embustero, mal pagador",
+							"topic":true,
+							"short_def": "Embustero, mal pagador",
+							"answer": [ "tram", "po","so"]
+							
+						}
+					],
+					"4":
+					[					
+						{
+							"first_point":"right",
+							"direction": "down",
+							"def": "La obra",
+							"topic":true,
+							"short_def": "La obra",
+							"answer": [ "da", "ma","bo","ba"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Este",
+							"topic":false,
+							"short_def": "Este",
+							"answer": [ "E"]
+							
+						}
+					],
+					"6":
+					[
+						{
+								"first_point":"right",
+								"direction": "down",
+								"def": "Ejercicio físico",
+								"topic":false,
+								"short_def": "Ejercicio físico",
+								"answer": [ "de", "por","te"]
+								
+						}
+					],
+					"8":
+					[					
+						{
+							"first_point":"right",
+							"direction": "down",
+							"def": "La obra",
+							"topic":true,
+							"short_def": "La obra",
+							"answer": [ "do", "ro","te","a"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Infusion",
+							"topic":false,
+							"short_def": "Infusion",
+							"answer": [ "que"]
+							
+						}
+					]
+					
+				},
+			"1":{
+					"2":
+					[	
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Estilo",
+							"topic":true,
+							"short_def": "Estilo",
+							"clue":[
+								"pista 1",
+								"pista 2"
+							],
+							"answer": [ "po", "e","ma"]
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Danza venezolana",
+							"topic":false,
+							"short_def": "Danza venezolana",
+							"answer": [ "jo", "ro", "po"]
+							
+						}
+					],
+					"6":
+					[					
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Porcicultor",
+							"topic":false,
+							"short_def": "Porcicultor",
+							"answer": [ "por", "que","ro"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Recoger viajeros en ruta",
+							"topic":false,
+							"short_def": "Recoger viajeros en ruta",
+							"answer": [ "bo", "te","ar"]
+							
+						}
+					]
+				},
+			"2":{
+					"0":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Sucio inmundo",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "li", "jo","so"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "Taimado",
+							"topic":false,
+							"short_def": "Recoger viajeros en ruta",
+							"answer": [ "pi", "ca","ro"]
+							
+						}
+					],
+					"4":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Muy bobo",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "bo", "bo","te"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "Laberinto",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "de", "da","lo"]
+							
+						}
+					],
+					"8":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Infusión",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "te"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Moderadas",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "me", "dia","nas"]
+							
+						}
+					]
+					
+				},
+			"3":{
+					"3":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Controversia",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "de","ba","te"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Alosa, saboga",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sa", "ba","lo"]
+							
+						}
+					],
+					"7":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "(... culpa) por mi culpta",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "me","a"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Conjetura",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ca", "ba","la"]
+							
+						}
+					]
+				},
+			"4":{
+					"0":
+					[
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "(guardo) 2.ª esposa",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "jua","na"]
+							
+						}
+					],
+					"1":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "mesón",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "po","sa","da"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Acónito",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "na", "pe","lo"]
+							
+						}
+					],
+					"5":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "(obra)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "ar","ca","dia"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Filipina de Tanoria",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ta", "no","ra"]
+							
+						}
+					],
+					"9":
+					[
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "entablado móvil",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ta","ri","ma"]
+							
+						}
+					]
+				},
+			"5":{
+				"2":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "bolilla para votar",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ba","lo", "ta"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "río inglés",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ta","me","sis"]
+							
+						}
+					],
+					"6":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "cesto grande",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ba","nas","ta"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "ataque de locura",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ve", "na","da"]
+							
+						}
+					]
+				},
+			"6":{
+				"0":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "parte de la corola",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "pe","ta","lo"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "hija de herodes",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sa","lo","me"]
+							
+						}
+					],
+					"4":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "estilo",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "no","ve","la"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "pez teleósteo",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ti", "ma","lo"]
+							
+						}
+					],
+					"8":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "medida japonesa",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ri"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "avenamiento",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "dra", "ga","do"]
+							
+						}
+					]
+				},
+			"7":{
+				"3":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Déspota, FEM.",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ti","ra","na"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Que teme",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "te", "me","dor"]
+							
+						}
+					],
+					"7":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "(estilo)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "dra","ma"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "cenagosa",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "la", "mo","sa"]
+							
+						}
+					]
+				},
+			"8":{
+				"0":
+					[
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "(estilo)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "co","pla"]
+							
+						}
+					],
+					"1":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "método",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sis","te","ma"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "banana",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "pla", "ta","no"]
+							
+						}
+					],
+					"5":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "Filipina soltera y joven",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "da","la","ga"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "Natural de Saba",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sa", "be","o"]
+							
+						}
+					],
+					"9":
+					[
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "nitrato potásico",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sa","li","tre"]
+							
+						}
+					]
+				},
+			"9":{
+				"2":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "parecida a la miel",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "me","lo", "sa"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "curaba",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sa","na","ba"]
+							
+						}
+					],
+					"6":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "modesta",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "mo","do","sa"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "raya",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "li", "ne","a"]
+							
+						}
+					]
+				},
+			"10":{
+				"0":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "que tasa",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ta","sa","dor"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "provisión de víveres",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "a","no","na"]
+							
+						}
+					],
+					"4":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "la (obra)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "be","li","sa"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "distante",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "le", "ja","no"]
+							
+						}
+					],
+					"8":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "litio",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "li"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "primer cebo dado al perro",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "en", "car","ne"]
+							
+						}
+					]
+				},
+			"11":{
+				"3":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "político italiano",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "le","o","ne"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "abalorio grueso",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ro", "ca","lla"]
+							
+						}
+					],
+					"7":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "en medio",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "en","tre"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "(madre)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "fran", "cis","ca"]
+							
+						}
+					]
+				},
+			"12":{
+				"0":
+					[
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "Escritor de EEUU",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "po","e"]
+							
+						}
+					],
+					"1":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "escritor español",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ba","ro","ja"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "(... osorio) (amante)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "e", "le","na"]
+							
+						}
+					],
+					"5":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "hacer franco",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "a","fran","car"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "(estilo)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "ro", "man","ce"]
+							
+						}
+					],
+					"9":
+					[
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "cochinillo asado",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ros","tri","zo"]
+							
+						}
+					]
+				},
+			"13":{
+				"2":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "de canto agradable",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ca","no", "ro"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "vehículo para la nieve",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "tri","ne","o"]
+							
+						}
+					],
+					"6":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "prelado y político español",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "cis","ne","ros"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "erario",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "te", "so","ro"]
+							
+						}
+					]
+				},
+			"14":{
+				"0":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "(estilo)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "le","tri","lla"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "vano, fútil",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "i","na","ne"]
+							
+						}
+					],
+					"4":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "gordura del animal",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "man","te","ca"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "verja",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "re", "ja","do"]
+							
+						}
+					],
+					"8":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "prefijo, tres",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "tri"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "acción de rearmar",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "re", "ar","me"]
+							
+						}
+					]
+				},
+			"15":{
+				"3":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "separación, desvío",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "re","ce","so"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "regios",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "re", "a","les"]
+							
+						}
+					],
+					"7":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "oración",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "re","zo"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "decoración",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "de", "co","ra","do"]
+							
+						}
+					]
+				},
+			"16":{
+				"0":
+					[
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "estilo",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "glo","sa"]
+							
+						}
+					],
+					"1":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "organo de la audición",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "o","re","ja"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "religiosa",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "sa", "le","sa"]
+							
+						}
+					],
+					"5":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "cercar",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ro","de","ar"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "rodadura",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ro", "ta","ción"]
+							
+						}
+					],
+					"9":
+					[
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "adorno femenino de la cabeza",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "dia","de","ma"]
+							
+						}
+					]
+				},
+			"17":{
+				"2":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "adoración",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "a","do", "ro"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "hermano de Caín",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "a","bel"]
+							
+						}
+					],
+					"6":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "(estilo)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "co","me","dia"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "masurio",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ma"]
+							
+						}
+					]
+				},
+			"18":{
+			
+				"0":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "fieles",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "le","a","les"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "right",
+							"def": "(... de urbina) 1ª esposa",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "i","sa","bel"]
+							
+						}
+					],
+					"4":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "palmera canaria",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "ta","ma","ra"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "perro",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "can"]
+							
+						}
+					],
+					"8":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "preposición",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "de"]
+							
+						},
+						{
+							"first_point":"down",
+							"direction": "down",
+							"def": "nota musical",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "la"]
+							
+						}
+					]
+				},
+			"19":{
+				"2":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "(estilo)",
+							"topic":true,
+							"short_def": "",
+							"answer": [ "can","ción"]
+							
+						}
+					],
+					"6":
+					[
+						{
+							"first_point":"right",
+							"direction": "right",
+							"def": "dolame, aje, achaque",
+							"topic":false,
+							"short_def": "",
+							"answer": [ "do","la","ma"]
+							
+						}
+					]
+			
+				}				
+		
+		}
+	}
+}

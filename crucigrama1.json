@@ -1,0 +1,43 @@
+{
+	"crossword":
+	{
+		"description":
+		{
+			"title":"Lope de Vega",
+			"cols":	10,
+			"rows":	20,
+			"topic": "Lope de Vega",
+			"unit": "Silaba"
+		},
+		"content":
+		{	
+			"0":{
+					"0":
+					[	
+						{
+							"first_point":"right",
+							"direction": "down",
+							"def": "Obra",
+							"topic":true,
+							"short_def": "Obra",
+							"clue":[
+								"pista 1",
+								"pista 2"
+							],
+							"answer": [ "an", "ge","li", "ca"]
+						},
+						{
+							"first_point":"down",
+							"direction": "left",
+							"def": "Brama el león",
+							"topic":false,
+							"short_def": "Brama (León)",
+							"answer": [ "ru", "ge"]
+							
+						}
+					]
+				}
+		}
+	}
+}
+					

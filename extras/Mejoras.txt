@@ -1,0 +1,32 @@
+1. poner un widget de flecha por definición en la dirección adecuada de tal forma que no
+sea el square el que cambie el background en función de las direcciones asociadas
+La versión actual utiliza el propio background de la casilla para poner las flechas en 
+funcion de las direcciones
+2. Al clickar en una casilla caracter, recorrer hacia izda, dcha arriba y abajo
+buscando los defs asociados y establecer m_current_advance_direction a la direccion
+adecuada en función de si se ha clickado por encima de la mitad de la casilla o por debajo
+2. load de los xml
+3. Tamaño de la letra
+3. botón jugar
+4. cursores para moverse por las casillas
+5. Cargar un directorio (crucigrama a crucigrama en modo juego)
+6. Timer para saber cuanto tardas en hacer un crucigrama
+7. Cuando se cambie de edition a play se podría pasar el m_grid_info_original al m_grid_info y borrar m_grid_info_original
+8. Zoom cuando estoy sobre una casilla de definiciones en el modo play
+En playMode:
+   9. Si clicko sobre un DEF con el botón derecho darl la posibilidad de resolver
+   10. Dos maneras de seleccionar palabra: clickando la primera letra o clickando sobre el texto de un DEF para rellenar palabra (el cursor se pondría directamente en la primera palabra)
+       para saber que def ha clickado mirar el tamaño del rectangulo que ocupa el texto del DEF
+   11. Puntuación basada en el número de palabras en las que has requerido de resolución
+   12. Borrar letra con supr
+   13. Moverse con las flechas
+   14. Al terminar de rellenar todo el crucigrama dar feedback de que está bien o de que hay n palabras mal
+   15. Clasificar los crucigramas por niveles de dificultad
+   16. mantener la palabra actual seleccionada posicion i,j a i,j
+   17. Al seleccionar una palabra poner el texto del DEF pertinente en un recuadro rojo
+18. Publicidad
+19. Adaptarlo a Android
+20. Casillas de otro color
+21. Casillas esquinas redondeadas
+22. Cargar por path
+23. Al seleccionar una casilla mostrar seleccinodas las palabras a las que pertenece
