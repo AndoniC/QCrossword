@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iomanip>
 
+
 CrossWordData::CrossWordData()
 {
 
@@ -124,6 +125,74 @@ void CrossWordData::removeKey(int row, int col)
 	if (contains(m_data["crossword"]["content"], std::to_string(row), std::to_string(col)))
 	{
 		m_data["crossword"]["content"][std::to_string(row)][std::to_string(col)] = nlohmann::json::object();
+	}
+
+}
+
+void CrossWordData::fillWithContent(std::vector<std::vector<anchor_points_t> > &content)
+{
+	int rows = (int)content.size();
+	int cols = (int)content[0].size();
+
+	if (contains(m_data["crossword"]["description"], "cols") && contains(m_data["crossword"]["description"], "rows"))
+	{
+		if (m_data["crossword"]["description"]["cols"].get<int>() == cols && m_data["crossword"]["description"]["rows"].get<int>() == rows)
+		{
+			if (contains(m_data["crossword"], "content"))
+			{
+				for (int i = 0; i < rows; i++)
+				{
+					for (int j = 0; j < cols; j++)
+					{
+						if (!contains(m_data["crossword"]["content"], std::to_string(i).c_str())) continue;
+						if (!contains(m_data["crossword"]["content"][std::to_string(i).c_str()], std::to_string(j).c_str())) continue;
+
+						nlohmann::json &json_node = m_data["crossword"]["content"][std::to_string(i).c_str()][std::to_string(j).c_str()];
+						if (json_node.empty()) continue;
+
+						for (auto& definition : json_node.items())
+						{
+							nlohmann::json &one_def = definition.value();
+							// key tile: remove answers and rewrite them
+							//one_def["answer"].clear();
+
+							cv::Point first_point,last_point;
+							std::string fp = one_def["first_point"].get<std::string>();
+							std::string dir = one_def["direction"].get<std::string>();
+
+							if (!fp.compare("right")) first_point = cv::Point(j + 1, i);
+							if (!fp.compare("left")) first_point = cv::Point(j - 1, i);
+							if (!fp.compare("up")) first_point = cv::Point(j, i - 1);
+							if (!fp.compare("down")) first_point = cv::Point(j, i + 1);
+
+							// calculate last point
+							int nwords = one_def["answer"].size();
+							if (!dir.compare("right")) last_point = first_point + cv::Point(nwords, 0);
+							if (!dir.compare("left")) last_point = first_point + cv::Point(-nwords, 0);
+							if (!dir.compare("up")) last_point = first_point + cv::Point(0, -nwords);
+							if (!dir.compare("down")) last_point = first_point + cv::Point(0, nwords);
+
+							cv::Point next_position = first_point;
+							one_def["answer"].clear();
+
+							for (int i =0;i<nwords;i++)
+							{
+								one_def["answer"].push_back(content[next_position.y][next_position.x].text);
+
+								if (!dir.compare("right")) next_position += cv::Point(1, 0);
+								if (!dir.compare("left")) next_position += cv::Point(-1, 0);
+								if (!dir.compare("up")) next_position += cv::Point(0, -1);
+								if (!dir.compare("down")) next_position += cv::Point(0, 1);
+							}
+
+						}
+
+					}
+				}
+			}
+
+
+		}
 	}
 
 }

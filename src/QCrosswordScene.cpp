@@ -153,7 +153,7 @@ void QCrosswordScene::changeTo(int pos_x, int pos_y)
 
 	if (DataManager::getCrossword()->map_square_key.empty()) return;
 
-	DataManager::anchor_points_t anchor_point = DataManager::getCrossword()->map_square_key[pos_y][pos_x];
+	CrossWordData::anchor_points_t anchor_point = DataManager::getCrossword()->map_square_key[pos_y][pos_x];
 	anchor_point.printout();
 	
 

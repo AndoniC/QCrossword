@@ -7,6 +7,7 @@
 #include <iostream>
 #include <QFileDialog>
 #include "nlohmann/json.hpp"
+#include "ext/ext_ocv.h"
 class CrossWordData 
 {
 public:
@@ -42,7 +43,33 @@ public:
 
 public:
 
-	
+	struct anchor_points_t
+	{
+		std::string text;
+		cv::Point horizontal_key;
+		cv::Point vertical_key;
+		cv::Point first_horizontal_tile;
+		cv::Point first_vertical_tile;
+		cv::Point last_horizontal_tile;
+		cv::Point last_vertical_tile;
+		int isKey;
+		bool isValid;
+		anchor_points_t() { isKey = 0; isValid = false; }
+		void printout()
+		{
+			std::cout << " --------------------" << std::endl;
+			std::cout << "    Text: " << text << std::endl;
+			std::cout << "    horizontal_key: " << horizontal_key.x << " , " << horizontal_key.y << std::endl;
+			std::cout << "    vertical_key: " << vertical_key.x << " , " << vertical_key.y << std::endl;
+			std::cout << "    First_horizontal_tile: " << first_horizontal_tile.x << " , " << first_horizontal_tile.y << std::endl;
+			std::cout << "    First_vertical_tile: " << first_vertical_tile.x << " , " << first_vertical_tile.y << std::endl;
+			std::cout << "    last_horizontal_tile: " << last_horizontal_tile.x << " , " << last_horizontal_tile.y << std::endl;
+			std::cout << "    last_vertical_tile: " << last_vertical_tile.x << " , " << last_vertical_tile.y << std::endl;
+			std::cout << "    IsKey: " << isKey << std::endl;
+			std::cout << "    IsValid: " << isValid << std::endl;
+			std::cout << " --------------------" << std::endl;
+		}
+	};
 
 	struct crossword_desc_t
 	{
@@ -79,6 +106,11 @@ public:
 	void addKey(int row, int col, crossword_key_t &desc);
 	void removeKey(int row, int col);
 	crossword_desc_t getDescription();
+
+
+	void fillWithContent(std::vector<std::vector<anchor_points_t> > &lcontent);
+
+
 
 	/*!
 	* \brief getKeySquare

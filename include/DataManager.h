@@ -43,38 +43,7 @@ class DataManager {
 	DataManager() { current_direction = GAME_DIRECTION::VERTICAL; };
 public:
 
-
-
-
-	
-
-	struct anchor_points_t
-	{
-		std::string text;
-		cv::Point horizontal_key;
-		cv::Point vertical_key;
-		cv::Point first_horizontal_tile;
-		cv::Point first_vertical_tile;
-		cv::Point last_horizontal_tile;
-		cv::Point last_vertical_tile;
-		int isKey;
-		bool isValid;
-		anchor_points_t() { isKey = 0; isValid = false; }
-		void printout()
-		{
-			std::cout << " --------------------" << std::endl;
-			std::cout << "    Text: " << text << std::endl;
-			std::cout << "    horizontal_key: " << horizontal_key.x << " , " << horizontal_key.y << std::endl;
-			std::cout << "    vertical_key: " << vertical_key.x << " , " << vertical_key.y << std::endl;
-			std::cout << "    First_horizontal_tile: " << first_horizontal_tile.x << " , " << first_horizontal_tile.y << std::endl;
-			std::cout << "    First_vertical_tile: " << first_vertical_tile.x << " , " << first_vertical_tile.y << std::endl;
-			std::cout << "    last_horizontal_tile: " << last_horizontal_tile.x << " , " << last_horizontal_tile.y << std::endl;
-			std::cout << "    last_vertical_tile: " << last_vertical_tile.x << " , " << last_vertical_tile.y << std::endl;
-			std::cout << "    IsKey: " << isKey << std::endl;
-			std::cout << "    IsValid: " << isValid << std::endl;
-			std::cout << " --------------------" << std::endl;
-		}
-	};
+		
 
 	struct crossword_data_t
 	{
@@ -82,7 +51,7 @@ public:
 		CrossWordData data;  
 
 		std::vector<std::vector< QCrosswordSquare * > > graphical_data;
-		std::vector< std::vector <anchor_points_t> > map_square_key;  // this matrix maps one square with the positions of the key square to whose definitions it belongs.
+		std::vector< std::vector <CrossWordData::anchor_points_t> > map_square_key;  // this matrix maps one square with the positions of the key square to whose definitions it belongs.
 																	// if square is not key string with its corresponent text will also be stored
 		std::vector<std::vector<std::string> > playing_crossword;  // crossword which will store words when playing
 	};
@@ -108,7 +77,7 @@ public:
 	* \brief save
 	* This function saves a crossword to a json file
 	*/
-	static int save(const char* file, int index);
+	static void save(const char* file, int index=-1) {  DataManager::instance().saveLocal(file,index); }
 
 
 
@@ -208,6 +177,21 @@ private:
 		createCrosswordMaps(idx);
 	
 		return (int)m_crossword_list.size() - 1;
+
+
+	}
+
+	void saveLocal(std::string file, int index)
+	{
+		if (index == -1) index = m_crossword_list.size() - 1;
+		if (index < 0) return;
+
+		crossword_data_t t;
+		t = m_crossword_list[index];
+		// fill crossword data with content in map_square_key
+		t.data.fillWithContent(t.map_square_key);
+		// save crossword
+		t.data.saveCrosswordData(file);
 
 
 	}

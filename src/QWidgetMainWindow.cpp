@@ -374,6 +374,31 @@ int QWidgetMainWindow::load(QString file_name)
 
 }
 
+
+int QWidgetMainWindow::save(QString file_name)
+{
+
+	printf("\n\nLOADING CROSSWORD\n");
+	QString filename;
+	if (file_name.isEmpty())
+	{
+		filename = QFileDialog::getSaveFileName(this, "Save json crossword", last_dir.c_str(),
+			tr("json files (*.json);;All files (*.*)"));
+	}
+	else filename = file_name;
+
+	last_dir = ext::mix::path(filename.toLocal8Bit().data());
+
+
+	// Create data and retrieve index in the array of crosswords
+	DataManager::save(filename.toLocal8Bit().data());
+
+	
+
+	return 1;
+	
+
+}
 //-- ACTIONS --//
 void QWidgetMainWindow::acNew()
 {
@@ -477,7 +502,7 @@ void QWidgetMainWindow::acLoad()
 }
 void QWidgetMainWindow::acSave()
 {
-	//this->m_widget_crossword->write("");
+	int ret = save(QString());
 
 }
 void QWidgetMainWindow::acSolution()
@@ -724,7 +749,7 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 		DataManager::clearSquareText();
 
 		//update graphical content
-		update();
+		this->m_crossword_viewer.scene()->update();
 		break;
 	case Qt::Key_Space:
 	{

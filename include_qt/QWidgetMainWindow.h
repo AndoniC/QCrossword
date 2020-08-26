@@ -40,7 +40,8 @@ public:
 	void keyPressEvent(QKeyEvent *event );
 	
 	int load(QString file_name);
-	void readSquareElement(QXmlStreamReader &r);
+	int save(QString file_name);
+
 
 	void calculateSquareSize(int rows, int cols, int &height, int &width, double &marginy, double &marginx, double &square_size);
 	///void selectWord(DIRECTION dir,int y,int x,bool f);
