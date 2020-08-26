@@ -655,6 +655,12 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 	}
 	case Qt::Key_Left:
 	{
+		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
+		{
+			DataManager::changeDirection();
+			//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
+			((QCrosswordScene*)m_crossword_viewer.scene())->update();
+		}
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::HORIZONTAL)
 		{
 			//update index
@@ -666,6 +672,13 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 	}
 	case Qt::Key_Right:
 	{
+		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
+		{
+			DataManager::changeDirection();
+//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
+			((QCrosswordScene*)m_crossword_viewer.scene())->update();
+		}
+
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::HORIZONTAL)
 		{
 			//update index
@@ -678,6 +691,12 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 	}
 	case Qt::Key_Up:
 	{
+		if (DataManager::getCurrentDirection() == GAME_DIRECTION::HORIZONTAL)
+		{
+			DataManager::changeDirection();
+			//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
+			((QCrosswordScene*)m_crossword_viewer.scene())->update();
+		}
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
 		{
 			//update index
@@ -690,6 +709,12 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 	}
 	case Qt::Key_Down:
 	{
+		if (DataManager::getCurrentDirection() == GAME_DIRECTION::HORIZONTAL)
+		{
+			DataManager::changeDirection();
+			//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
+			((QCrosswordScene*)m_crossword_viewer.scene())->update();
+		}
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
 		{
 			//update index
