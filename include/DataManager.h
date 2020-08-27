@@ -80,6 +80,11 @@ public:
 	static void save(const char* file, int index=-1) {  DataManager::instance().saveLocal(file,index); }
 
 
+	/*!
+	* \brief savegame
+	* This function saves a crossword to a json file
+	*/
+	static void savegame(const char* file, int index = -1) { DataManager::instance().savegameLocal(file, index); }
 
 
 	/*!
@@ -192,8 +197,47 @@ private:
 		t.data.fillWithContent(t.map_square_key);
 		// save crossword
 		t.data.saveCrosswordData(file);
+		
+	
+
+	}
 
 
+	void savegameLocal(std::string file, int index)
+	{
+		if (index == -1) index = m_crossword_list.size() - 1;
+		if (index < 0) return;
+
+		if (!ext::fs::fexists(file)) saveLocal(file, index);
+
+		std::string path, fname, ext;
+		ext::mix::splitFileName(file, path, fname, ext);
+
+		crossword_data_t t;
+		t = m_crossword_list[index];
+		nlohmann::json json_playing_info;
+
+		json_playing_info["source"] = file;
+
+		// save crossword
+		json_playing_info["content"] = nlohmann::json::array();
+		for (int i = 0; i < t.playing_crossword.size(); i++)
+		{
+			for (int j = 0; j < t.playing_crossword[i].size(); j++)
+			{
+				nlohmann::json node;
+				if (!t.playing_crossword[i][j].empty())
+				{
+					node[std::to_string(i)][std::to_string(j)] = t.playing_crossword[i][j];
+					json_playing_info["content"].push_back(node);
+				}
+			}
+		}
+
+		std::string fname_game = path + fname + "_game." + ext;
+		std::ofstream o(fname_game);
+		o << std::setw(4) << json_playing_info << std::endl;
+		o.close();
 	}
 
 	crossword_data_t *getCrosswordLocal(int idx) {

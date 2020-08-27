@@ -78,6 +78,11 @@ void QWidgetMainWindow::createActions()
     m_acSave->setShortcut(QObject::tr("Ctrl+D"));
     connect(m_acSave, SIGNAL(triggered()), this, SLOT(acSave()));
 
+
+	m_acSaveGame = new QAction(QIcon(":/save"), QObject::tr("&Save Game"), this);
+	m_acSaveGame->setShortcut(QObject::tr("Ctrl+D"));
+	connect(m_acSaveGame, SIGNAL(triggered()), this, SLOT(acSaveGame()));
+
 	m_acSolution = new QAction(QIcon(":/solution"),QObject::tr("&Solution"), this);
 	m_acSolution->setShortcut(QObject::tr("Ctrl+V"));
     connect(m_acSolution, SIGNAL(triggered()), this, SLOT(acSolution()));
@@ -160,6 +165,7 @@ void QWidgetMainWindow::createMenu()
 	fileMenu->addSeparator();
 	fileMenu->addAction(m_acLoad);
 	fileMenu->addAction(m_acSave);
+	fileMenu->addAction(m_acSaveGame);
 	fileMenu->addSeparator();
 	fileMenu->addAction(m_acLoadDir);
 	fileMenu->addSeparator();
@@ -399,6 +405,31 @@ int QWidgetMainWindow::save(QString file_name)
 	
 
 }
+int QWidgetMainWindow::savegame(QString file_name)
+{
+
+	printf("\n\nLOADING CROSSWORD\n");
+	QString filename;
+	if (file_name.isEmpty())
+	{
+		filename = QFileDialog::getSaveFileName(this, "Save json crossword", last_dir.c_str(),
+			tr("json files (*.json);;All files (*.*)"));
+	}
+	else filename = file_name;
+
+	last_dir = ext::mix::path(filename.toLocal8Bit().data());
+
+
+	// Create data and retrieve index in the array of crosswords
+	DataManager::savegame(filename.toLocal8Bit().data());
+
+
+
+	return 1;
+
+
+}
+
 //-- ACTIONS --//
 void QWidgetMainWindow::acNew()
 {
@@ -505,6 +536,11 @@ void QWidgetMainWindow::acSave()
 	int ret = save(QString());
 
 }
+void QWidgetMainWindow::acSaveGame()
+{
+	int ret = savegame(QString());
+}
+
 void QWidgetMainWindow::acSolution()
 {
 	

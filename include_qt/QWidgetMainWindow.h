@@ -41,7 +41,7 @@ public:
 	
 	int load(QString file_name);
 	int save(QString file_name);
-
+	int savegame(QString file_name);
 
 	void calculateSquareSize(int rows, int cols, int &height, int &width, double &marginy, double &marginx, double &square_size);
 	///void selectWord(DIRECTION dir,int y,int x,bool f);
@@ -62,6 +62,7 @@ public:
 	QAction *m_acLoadDir;
 	QAction *m_acLoad;
 	QAction *m_acSave;
+	QAction *m_acSaveGame;
 	QAction *m_acSolution;
 	QAction *m_acCheck;
 	QAction *m_acPlayMode;
@@ -114,6 +115,7 @@ private slots:
 	void acNew();
 	void acLoad();
 	void acSave();
+	void acSaveGame();
 	void acLoadDir();
 	void acSolution();
 	void acPlayMode();
