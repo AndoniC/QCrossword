@@ -260,11 +260,24 @@ private:
 			data->map_square_key.resize(desc.rows);				
 			data->playing_crossword.resize(desc.rows);
 
+			{
+				LOG_SCOPE_F(INFO, "Loading Crossword: ...");
+				LOG_F(INFO, "Size: %d x %d", desc.rows, desc.cols);
+				LOG_F(INFO, "Topic : %s ", desc.topic.c_str());
+				LOG_F(INFO, "Units : %s ", (desc.unit)?"Sylabes":"Letters");
+			}
 			
 			for (int i = 0; i < desc.rows; i++)
 			{
 				data->map_square_key[i].resize(desc.cols);
 				data->playing_crossword[i].resize(desc.cols);
+				for (int j = 0; j < desc.cols; j++)
+				{
+					data->map_square_key[i][j].first_horizontal_tile = cv::Point(j, i);
+					data->map_square_key[i][j].first_vertical_tile = cv::Point(j, i);
+					data->map_square_key[i][j].last_horizontal_tile = cv::Point(j, i);
+					data->map_square_key[i][j].last_vertical_tile = cv::Point(j, i);
+				}
 			}
 
 			for (int i = 0; i < (int) data->map_square_key.size(); i++)
@@ -322,9 +335,7 @@ private:
 									std::cout << "Error parsing" << std::endl;
 								for (auto& el : one_def["answer"].items())
 								{
-									
-
-
+								
 									// for each answer set text for each square belonging to the answer
 								//	std::cout << "key: " << el.value() << '\n';
 									std::string aux_text = el.value().get<std::string>();
