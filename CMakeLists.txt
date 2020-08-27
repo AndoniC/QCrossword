@@ -48,6 +48,17 @@ FIND_PACKAGE( OpenCV REQUIRED )
 #@ Set additional functions library files
 add_subdirectory(${MODULES_folder}/ext ${PROJECT_BINARY_DIR}/ext)
 
+
+#---------------------------------------------------#
+#              Loguru Configuration                 #
+#---------------------------------------------------#
+OPTION (FLAG_LOGURU "Use flag to log info" FALSE)
+IF(FLAG_LOGURU)
+	SET(LOGURU_DIR "${MODULES_folder}/loguru-2.0.0" CACHE PATH "Directorio libreria loguru")
+	SET (include_dirs  ${LOGURU_DIR})
+	FILE (GLOB LOGURU_SRCS "${LOGURU_DIR}/*.cpp" "${LOGURU_DIR}/*.h" "${LOGURU_DIR}/*.c" "${LOGURU_DIR}/*.hpp")
+ENDIF(FLAG_LOGURU)
+
 #---------------------------------------------------#
 #              QT Configuration                     #
 #---------------------------------------------------#
@@ -161,7 +172,7 @@ LINK_DIRECTORIES (  ${QT_LIBRARY_DIR} "./bin/debug" "./bin/release")
 #---------------------------------------------------#
 #	               EXECUTABLE		            	#
 #---------------------------------------------------#
-ADD_EXECUTABLE( qcrossword ${sources} ${headers} ${headers_qt} ${EXT_SRCS} ${MOC_SOURCE_FILES} ${UIS} ${RC_SRC_FILES} )
+ADD_EXECUTABLE( qcrossword ${sources} ${headers} ${headers_qt} ${EXT_SRCS} ${MOC_SOURCE_FILES} ${UIS} ${RC_SRC_FILES} ${LOGURU_SRCS})
 
 #---------------------------------------------------#
 #	               LIBRERIAS		            	#

@@ -60,6 +60,62 @@ void CrossWordData::loadCrosswordData(std::string _json_file_name, int format)
 	{
 		// parse parameters from file
 		m_data = nlohmann::json::parse(json_txt);
+		// check direction and position
+		
+	
+
+		if (contains(m_data["crossword"]["description"], "cols") && contains(m_data["crossword"]["description"], "rows"))
+		{
+
+			int cols = m_data["crossword"]["description"]["cols"].get<int>();
+			int rows = m_data["crossword"]["description"]["rows"].get<int>();
+			if (contains(m_data["crossword"], "content"))
+			{
+				for (int i = 0; i < rows; i++)
+				{
+					for (int j = 0; j < cols; j++)
+					{
+						if (!contains(m_data["crossword"]["content"], std::to_string(i).c_str())) continue;
+						if (!contains(m_data["crossword"]["content"][std::to_string(i).c_str()], std::to_string(j).c_str())) continue;
+
+						nlohmann::json &json_node = m_data["crossword"]["content"][std::to_string(i).c_str()][std::to_string(j).c_str()];
+						if (json_node.empty()) continue;
+						int count = 0;
+						for (auto& definition : json_node.items())
+						{
+							count++;
+							std::string fp = definition.value()["first_point"].get<std::string>();
+							if (fp.empty())
+							{
+								//LOG_F(ERROR, "First_point not detected");
+							}
+							else
+							{
+								START_POSITION::itype fp_aux = START_POSITION::to_itype(fp);
+								if (fp_aux == START_POSITION::__COUNT)
+									std::cout << "Error parsing " << i << " , " << j << " position, def " << count << std::endl;
+								definition.value()["first_point"] = START_POSITION::to_string(fp_aux).c_str();
+							}
+
+							std::string dir = definition.value()["direction"].get<std::string>();
+							if (dir.empty())
+							{
+								//LOG_F(ERROR, "First_point not detected");
+							}
+							else
+							{
+								DIRECTION::itype dir_aux = DIRECTION::to_itype(dir);
+								if (dir_aux == DIRECTION::__COUNT)
+									std::cout << "Error parsing " << i << " , " << j << " position, def " << count << std::endl;
+								definition.value()["direction"] = DIRECTION::to_string(dir_aux).c_str();
+							}
+						}
+					}
+				}
+			}
+		}
+
+
 	}
 	else if (format == 1)
 	{

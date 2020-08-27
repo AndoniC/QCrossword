@@ -121,12 +121,13 @@ void QCrosswordScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 	}
 	else if (mouseEvent->button() == Qt::RightButton)
 	{
-		
-		nlohmann::json node = DataManager::getCrossword()->data.getKeySquare(map_pos.x,map_pos.y);
-		if (!node.empty())
-			m_info_widget.fill(node);
-		m_info_widget.show();
-
+		if (StatusManager::is(StatusManager::ST_EDITING))
+		{
+			nlohmann::json node = DataManager::getCrossword()->data.getKeySquare(map_pos.x, map_pos.y);
+			if (!node.empty())
+				m_info_widget.fill(node);
+			m_info_widget.show();
+		}
 
 	}
 }

@@ -8,6 +8,13 @@
 #include <QFileDialog>
 #include "nlohmann/json.hpp"
 #include "ext/ext_ocv.h"
+#include "ext/ext.h"
+#include "loguru-2.0.0/operativeLog.h"
+
+CUSTOM_MAKE_ENUM(GAME_DIRECTION, VERTICAL, HORIZONTAL)
+CUSTOM_MAKE_ENUM(DIRECTION, LEFT, RIGHT, UP, DOWN, NONE)
+CUSTOM_MAKE_ENUM(START_POSITION, LEFT, RIGHT, TOP, BOTTOM, NOTILE)
+
 class CrossWordData 
 {
 public:

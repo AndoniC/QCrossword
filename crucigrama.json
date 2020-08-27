@@ -27,7 +27,7 @@
 							"answer": [ "an", "ge","li", "ca"]
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "Brama el león",
 							"topic":false,
@@ -60,12 +60,12 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Este",
 							"topic":false,
 							"short_def": "Este",
-							"answer": [ "E"]
+							"answer": [ "e"]
 							
 						}
 					],
@@ -93,7 +93,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Infusion",
 							"topic":false,
@@ -120,7 +120,7 @@
 							"answer": [ "po", "e","ma"]
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Danza venezolana",
 							"topic":false,
@@ -141,7 +141,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Recoger viajeros en ruta",
 							"topic":false,
@@ -164,7 +164,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "Taimado",
 							"topic":false,
@@ -185,8 +185,8 @@
 							
 						},
 						{
-							"first_point":"down",
-							"direction": "right",
+							"first_point":"bottom",
+							"direction": "down",
 							"def": "Laberinto",
 							"topic":false,
 							"short_def": "",
@@ -206,7 +206,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Moderadas",
 							"topic":false,
@@ -230,7 +230,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Alosa, saboga",
 							"topic":false,
@@ -251,7 +251,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Conjetura",
 							"topic":false,
@@ -265,7 +265,7 @@
 					"0":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "(guardo) 2.ª esposa",
 							"topic":false,
@@ -286,7 +286,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Acónito",
 							"topic":false,
@@ -307,7 +307,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Filipina de Tanoria",
 							"topic":false,
@@ -319,7 +319,7 @@
 					"9":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "entablado móvil",
 							"topic":false,
@@ -342,7 +342,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "río inglés",
 							"topic":false,
@@ -363,7 +363,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "ataque de locura",
 							"topic":false,
@@ -386,7 +386,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "hija de herodes",
 							"topic":false,
@@ -407,7 +407,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "pez teleósteo",
 							"topic":false,
@@ -428,7 +428,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "avenamiento",
 							"topic":false,
@@ -451,7 +451,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Que teme",
 							"topic":false,
@@ -472,7 +472,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "cenagosa",
 							"topic":false,
@@ -486,7 +486,7 @@
 				"0":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "(estilo)",
 							"topic":true,
@@ -507,7 +507,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "banana",
 							"topic":false,
@@ -528,7 +528,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "Natural de Saba",
 							"topic":false,
@@ -540,7 +540,7 @@
 					"9":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "nitrato potásico",
 							"topic":false,
@@ -563,7 +563,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "curaba",
 							"topic":false,
@@ -584,7 +584,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "raya",
 							"topic":false,
@@ -607,7 +607,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "provisión de víveres",
 							"topic":false,
@@ -628,7 +628,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "distante",
 							"topic":false,
@@ -649,7 +649,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "primer cebo dado al perro",
 							"topic":false,
@@ -672,7 +672,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "abalorio grueso",
 							"topic":false,
@@ -693,7 +693,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "(madre)",
 							"topic":true,
@@ -707,7 +707,7 @@
 				"0":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "Escritor de EEUU",
 							"topic":true,
@@ -728,7 +728,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "(... osorio) (amante)",
 							"topic":true,
@@ -749,7 +749,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "(estilo)",
 							"topic":true,
@@ -761,7 +761,7 @@
 					"9":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "cochinillo asado",
 							"topic":false,
@@ -784,7 +784,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "vehículo para la nieve",
 							"topic":false,
@@ -805,7 +805,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "erario",
 							"topic":false,
@@ -828,7 +828,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "vano, fútil",
 							"topic":false,
@@ -849,7 +849,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "verja",
 							"topic":false,
@@ -870,7 +870,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "acción de rearmar",
 							"topic":false,
@@ -893,7 +893,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "regios",
 							"topic":false,
@@ -914,7 +914,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "decoración",
 							"topic":false,
@@ -928,7 +928,7 @@
 				"0":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "estilo",
 							"topic":true,
@@ -949,7 +949,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "religiosa",
 							"topic":false,
@@ -970,19 +970,19 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "rodadura",
 							"topic":false,
 							"short_def": "",
-							"answer": [ "ro", "ta","ción"]
+							"answer": [ "ro", "ta","cion"]
 							
 						}
 					],
 					"9":
 					[
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "adorno femenino de la cabeza",
 							"topic":false,
@@ -1005,7 +1005,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "hermano de Caín",
 							"topic":false,
@@ -1026,7 +1026,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "masurio",
 							"topic":false,
@@ -1050,7 +1050,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "right",
 							"def": "(... de urbina) 1ª esposa",
 							"topic":true,
@@ -1071,7 +1071,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "perro",
 							"topic":false,
@@ -1092,7 +1092,7 @@
 							
 						},
 						{
-							"first_point":"down",
+							"first_point":"bottom",
 							"direction": "down",
 							"def": "nota musical",
 							"topic":false,
@@ -1103,7 +1103,7 @@
 					]
 				},
 			"19":{
-				"2":
+				"3":
 					[
 						{
 							"first_point":"right",
@@ -1111,7 +1111,7 @@
 							"def": "(estilo)",
 							"topic":true,
 							"short_def": "",
-							"answer": [ "can","ción"]
+							"answer": [ "can","cion"]
 							
 						}
 					],

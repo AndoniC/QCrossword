@@ -13,7 +13,7 @@
 #include "ext/ext_fs.h"
 #include "opencv2/calib3d.hpp"
 #include "nlohmann/json.hpp"
-#include "loguru-2.0.0/operativeLog.h"
+
 #include "CrosswordData.h"
 #include "QCrosswordSquare.h"
 #include "ext/ext.h"
@@ -29,9 +29,7 @@ class QCrosswordSquare;
 //BETTER_ENUM(DIRECTION, int, LEFT, RIGHT, UP, DOWN, NONE)
 //BETTER_ENUM(START_POSITION, int, LEFT_TILE, RIGHT_TILE, TOP_TILE, BOTTOM_TILE, NOTILE)
 
-CUSTOM_MAKE_ENUM(GAME_DIRECTION, VERTICAL, HORIZONTAL)
-CUSTOM_MAKE_ENUM(DIRECTION, LEFT, RIGHT, UP, DOWN, NONE)
-CUSTOM_MAKE_ENUM(START_POSITION, LEFT_TILE, RIGHT_TILE, TOP_TILE, BOTTOM_TILE, NOTILE)
+
 //enum GAME_DIRECTION { VERTICAL = 0, HORIZONTAL = 1 };
 //enum DIRECTION { LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3, NONE_DIR = -1 };
 //enum START_POSITION { LEFT_TILE = 0, RIGHT_TILE = 1, TOP_TILE = 2, BOTTOM_TILE = 3, NOTILE = -1 };
@@ -274,6 +272,9 @@ private:
 				
 				for (int j = 0; j < (int) data->map_square_key[i].size(); j++)
 				{
+
+					// for each key tile
+
 					nlohmann::json json_node = data->data.getKeySquare(j, i);
 					if (!json_node.empty())
 					{
@@ -281,20 +282,24 @@ private:
 						data->map_square_key[i][j].isKey = 1;
 						for (auto& definition : json_node.items())
 						{
-							nlohmann::json one_def = definition.value();
+							// for each key tile's def
+							nlohmann::json &one_def = definition.value();
 
 							
 
 							// key square
 							cv::Point first_point,last_point;
-							std::string fp = one_def["first_point"].get<std::string>();
-							std::string dir = one_def["direction"].get<std::string>();
+							std::string fp_aux = one_def["first_point"].get<std::string>();
+							std::string dir_aux = one_def["direction"].get<std::string>();
+							START_POSITION::itype fp = START_POSITION::to_itype(fp_aux);
+							DIRECTION::itype dir = DIRECTION::to_itype(dir_aux);
 							
-							if (!fp.compare("right")) first_point = cv::Point( j + 1,i);
-							if (!fp.compare("left")) first_point = cv::Point( j - 1,i);
-							if (!fp.compare("up")) first_point = cv::Point(j, i - 1);
-							if (!fp.compare("down")) first_point = cv::Point(j, i + 1);
-
+							if (fp == START_POSITION::RIGHT) first_point = cv::Point( j + 1,i);
+							else if (fp == START_POSITION::LEFT) first_point = cv::Point( j - 1,i);
+							else if (fp == START_POSITION::TOP) first_point = cv::Point(j, i - 1);
+							else if (fp == START_POSITION::BOTTOM) first_point = cv::Point(j, i + 1);
+							else 
+								std::cout << "Error parsing" << std::endl;
 							// for each answer set text for that key square  def1;;def2;;def3
 							if (data->map_square_key[i][j].text.empty())
 								data->map_square_key[i][j].text = one_def["def"].get<std::string>();
@@ -309,47 +314,53 @@ private:
 
 								// calculate last point
 								int nwords = one_def["answer"].size();
-								if (!dir.compare("right")) last_point = first_point + cv::Point(nwords, 0);
-								if (!dir.compare("left")) last_point = first_point +  cv::Point(-nwords, 0);
-								if (!dir.compare("up")) last_point = first_point +  cv::Point(0, -nwords);
-								if (!dir.compare("down")) last_point = first_point + cv::Point(0, nwords);
-
+								if (dir == DIRECTION::RIGHT) last_point = first_point + cv::Point(nwords, 0);
+								else if (dir == DIRECTION::LEFT) last_point = first_point +  cv::Point(-nwords, 0);
+								else if (dir == DIRECTION::UP) last_point = first_point +  cv::Point(0, -nwords);
+								else if (dir == DIRECTION::DOWN) last_point = first_point + cv::Point(0, nwords);
+								else 
+									std::cout << "Error parsing" << std::endl;
 								for (auto& el : one_def["answer"].items())
 								{
 									
 
 
 									// for each answer set text for each square belonging to the answer
-									std::cout << "key: " << el.value() << '\n';
+								//	std::cout << "key: " << el.value() << '\n';
 									std::string aux_text = el.value().get<std::string>();
 									if (!data->map_square_key[next_position.y][next_position.x].text.empty() && aux_text.compare(data->map_square_key[next_position.y][next_position.x].text))
 									{
-										std::cout << "Error en casilla " << i << " , " << j << std::endl;
-										std::cout << "Textos diferentes " << aux_text << " vs " << data->map_square_key[next_position.y][next_position.x].text << std::endl;
+										cv::Point conflicting_key;
+										if (dir == DIRECTION::RIGHT || dir == DIRECTION::LEFT)
+											conflicting_key = data->map_square_key[next_position.y][next_position.x].vertical_key;
+										else conflicting_key = data->map_square_key[next_position.y][next_position.x].horizontal_key;
+
+										LOG_F(ERROR," Error between tiles (%d, %d) and (%d, %d)", i,j, conflicting_key.y, conflicting_key.x);
+										LOG_F(ERROR, "Textos diferentes %s vs %s", aux_text.c_str(),data->map_square_key[next_position.y][next_position.x].text.c_str());
 									}
 									data->map_square_key[next_position.y][next_position.x].text = aux_text;
 									
 									data->map_square_key[next_position.y][next_position.x].isValid = true;
 									data->map_square_key[next_position.y][next_position.x].isKey = 0;
 
-									if (!dir.compare("right") || !dir.compare("left"))
+									if (dir == DIRECTION::RIGHT || dir == DIRECTION::LEFT)
 									{
 										data->map_square_key[next_position.y][next_position.x].horizontal_key = cv::Point(j, i);
 										data->map_square_key[next_position.y][next_position.x].first_horizontal_tile = first_point;
 										data->map_square_key[next_position.y][next_position.x].last_horizontal_tile = last_point;
 
 									}
-									if (!dir.compare("up") || !dir.compare("down"))
+									if (dir == DIRECTION::UP || dir == DIRECTION::DOWN)
 									{
 										data->map_square_key[next_position.y][next_position.x].vertical_key = cv::Point(j, i);
 										data->map_square_key[next_position.y][next_position.x].first_vertical_tile = first_point;
 										data->map_square_key[next_position.y][next_position.x].last_vertical_tile = last_point;
 									}
 
-									if (!dir.compare("right")) next_position += cv::Point(1, 0);
-									if (!dir.compare("left")) next_position += cv::Point(-1,0);
-									if (!dir.compare("up")) next_position += cv::Point(0, -1);
-									if (!dir.compare("down")) next_position += cv::Point(0, 1);
+									if (dir == DIRECTION::RIGHT) next_position += cv::Point(1, 0);
+									if (dir == DIRECTION::LEFT) next_position += cv::Point(-1,0);
+									if (dir == DIRECTION::UP) next_position += cv::Point(0, -1);
+									if (dir == DIRECTION::DOWN) next_position += cv::Point(0, 1);
 								}
 							}
 
