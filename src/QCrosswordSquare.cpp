@@ -22,6 +22,11 @@ QCrosswordSquare::QCrosswordSquare(int _idx,int _idy, int w, int h,int key, QMen
 	//pMyProxy->setWidget(m_text); // adding the QWidget based object to the proxy
 	//m_text->setText("A");
 	//m_text->setGeometry(0, 0, m_width, m_height);
+
+	arrow_upwards << QPointF(m_width*0.40, 0) << QPointF(m_width*0.5, -m_height*0.12) << QPointF(m_width*0.6, 0);
+	arrow_downwards << QPointF(m_width*0.4, 0) << QPointF(m_width*0.5, m_height*0.12) << QPointF(m_width*0.6, 0);
+	arrow_to_the_left << QPointF(0, m_height*0.40) << QPointF(-m_width*0.12, m_height*0.5) << QPointF(0, m_height *0.6);
+	arrow_to_the_right << QPointF(0, m_height*0.40) << QPointF(m_width*0.12, m_height*0.5) << QPointF(0, m_height *0.6);
 }
 
 QPainterPath QCrosswordSquare::shape() const
@@ -144,6 +149,9 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 	//QPen pen(Qt::black, 2);
 	painter->fillPath(path, Qt::white);
 
+
+	
+
 	//painter->setBrush(QColor(0, 0, 0, 255));
 	
 	painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
@@ -218,6 +226,78 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 	}
 	else
 	{
+
+		// Draw arrows at positions
+		QPolygonF arrow;
+		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::LEFT || 
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::LEFT ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::LEFT ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::LEFT 
+			)
+		{
+			arrow = arrow_to_the_left;
+		}
+		else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::RIGHT ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::RIGHT ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::RIGHT ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::RIGHT
+			)
+		{
+			arrow = arrow_to_the_right;
+		}
+		else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::UP ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::UP ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::UP ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::UP
+			)
+		{
+			arrow = arrow_upwards;
+		}
+		else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::DOWN ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::DOWN ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::DOWN ||
+			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::DOWN
+			)
+		{
+			arrow = arrow_downwards;
+		}
+		
+		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom != DIRECTION::NONE)
+		{
+			// traslate arrow to bottom
+			QPointF *points = arrow.data();
+			for (int i = 0; i < (int)arrow.size(); i++)
+			{
+				points[i] += QPointF(0, m_height*0.98);
+			}
+			painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+			painter->drawPolygon(arrow);
+		}
+		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left != DIRECTION::NONE)
+		{		
+			painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+			painter->drawPolygon(arrow);
+		}
+		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right != DIRECTION::NONE)
+		{
+			QPointF *points = arrow.data();
+			for (int i = 0; i < (int)arrow.size(); i++)
+			{
+				points[i] += QPointF(m_width*0.98, 0);
+			}
+
+			
+			painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+			painter->drawPolygon(arrow);
+		}
+		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top != DIRECTION::NONE)
+		{
+			painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+			painter->drawPolygon(arrow);
+		}
+
+
+
 		square_text = ext::string::toUpperCase(square_text);
 
 		QFont font("Arial", 0, 12, false);

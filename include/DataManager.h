@@ -313,6 +313,16 @@ private:
 							else if (fp == START_POSITION::BOTTOM) first_point = cv::Point(j, i + 1);
 							else 
 								std::cout << "Error parsing" << std::endl;
+
+							// set arrow indicator
+							if (fp == START_POSITION::RIGHT) data->map_square_key[first_point.y][first_point.x].arrow_at_left = dir;
+							else if (fp == START_POSITION::LEFT) data->map_square_key[first_point.y][first_point.x].arrow_at_right = dir;
+							else if (fp == START_POSITION::TOP) data->map_square_key[first_point.y][first_point.x].arrow_at_bottom = dir;
+							else if (fp == START_POSITION::BOTTOM) data->map_square_key[first_point.y][first_point.x].arrow_at_top = dir;
+							else
+								std::cout << "Error parsing" << std::endl;
+							
+
 							// for each answer set text for that key square  def1;;def2;;def3
 							if (data->map_square_key[i][j].text.empty())
 								data->map_square_key[i][j].text = one_def["def"].get<std::string>();

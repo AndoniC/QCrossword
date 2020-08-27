@@ -59,9 +59,15 @@ public:
 		cv::Point first_vertical_tile;
 		cv::Point last_horizontal_tile;
 		cv::Point last_vertical_tile;
+		
+		DIRECTION::itype arrow_at_left;
+		DIRECTION::itype arrow_at_right;
+		DIRECTION::itype arrow_at_top;
+		DIRECTION::itype arrow_at_bottom;
+
 		int isKey;
 		bool isValid;
-		anchor_points_t() { isKey = 0; isValid = false; }
+		anchor_points_t() { isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE; }
 		void printout()
 		{
 			std::cout << " --------------------" << std::endl;

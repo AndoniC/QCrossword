@@ -84,6 +84,9 @@ protected:
 	//QLineEdit* m_text; 
 
 	bool semiselected;
+
+	QPolygonF arrow_upwards,arrow_downwards,arrow_to_the_left,arrow_to_the_right;
+
 	
 };
 
