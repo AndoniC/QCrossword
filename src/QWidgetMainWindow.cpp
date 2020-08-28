@@ -325,6 +325,7 @@ int QWidgetMainWindow::load(QString file_name)
 	// Create graphical view of crossword idx
 	m_crossword_viewer.createCrosswordinScene(idx,40);
 	
+	m_statusLeft->setText(DataManager::getCrossword()->data.getDescription().topic.c_str());
 
 
 	return 1;

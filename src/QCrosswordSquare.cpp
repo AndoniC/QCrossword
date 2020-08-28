@@ -229,41 +229,16 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 
 		// Draw arrows at positions
 		QPolygonF arrow;
-		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::LEFT || 
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::LEFT ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::LEFT ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::LEFT 
-			)
-		{
-			arrow = arrow_to_the_left;
-		}
-		else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::RIGHT ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::RIGHT ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::RIGHT ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::RIGHT
-			)
-		{
-			arrow = arrow_to_the_right;
-		}
-		else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::UP ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::UP ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::UP ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::UP
-			)
-		{
-			arrow = arrow_upwards;
-		}
-		else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::DOWN ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::DOWN ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::DOWN ||
-			DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::DOWN
-			)
-		{
-			arrow = arrow_downwards;
-		}
+		
 		
 		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom != DIRECTION::NONE)
 		{
+
+			if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::LEFT ) arrow = arrow_to_the_left;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::RIGHT )	arrow = arrow_to_the_right;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::UP )	arrow = arrow_upwards;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_bottom == DIRECTION::DOWN)	arrow = arrow_downwards;
+
 			// traslate arrow to bottom
 			QPointF *points = arrow.data();
 			for (int i = 0; i < (int)arrow.size(); i++)
@@ -274,12 +249,22 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 			painter->drawPolygon(arrow);
 		}
 		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left != DIRECTION::NONE)
-		{		
+		{	
+
+			if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::LEFT) arrow = arrow_to_the_left;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::RIGHT)	arrow = arrow_to_the_right;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::UP)	arrow = arrow_upwards;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_left == DIRECTION::DOWN)	arrow = arrow_downwards;
 			painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 			painter->drawPolygon(arrow);
 		}
 		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right != DIRECTION::NONE)
 		{
+			if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::LEFT) arrow = arrow_to_the_left;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::RIGHT)	arrow = arrow_to_the_right;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::UP)	arrow = arrow_upwards;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_right == DIRECTION::DOWN)	arrow = arrow_downwards;
+
 			QPointF *points = arrow.data();
 			for (int i = 0; i < (int)arrow.size(); i++)
 			{
@@ -292,6 +277,11 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		}
 		if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top != DIRECTION::NONE)
 		{
+			if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::LEFT) arrow = arrow_to_the_left;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::RIGHT)	arrow = arrow_to_the_right;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::UP)	arrow = arrow_upwards;
+			else if (DataManager::getCrossword()->map_square_key[idy][idx].arrow_at_top == DIRECTION::DOWN)	arrow = arrow_downwards;
+
 			painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 			painter->drawPolygon(arrow);
 		}
@@ -304,6 +294,16 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter->setFont(font);
 		QFontMetrics metrics = painter->fontMetrics();
 		QRect fontRect = metrics.tightBoundingRect(square_text.c_str());
+		
+		// if text is correct print in green
+		if (StatusManager::is(StatusManager::ST_PLAYING) && !square_text.empty())
+		{ 
+			std::string sqlc = ext::string::toLowerCase(square_text);
+			if (!DataManager::getSquareText(idy, idx).compare(square_text) || !DataManager::getSquareText(idy, idx).compare(sqlc))
+				text_color = QColor(10, 150, 10);
+
+		}
+
 		painter->setPen(text_color);
 		painter->drawText(QPoint(m_width*0.5 - fontRect.width()*0.5, m_height*0.5 + fontRect.height()*0.5), square_text.c_str());
 	}
