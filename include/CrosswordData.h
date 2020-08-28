@@ -69,7 +69,11 @@ public:
 		bool isValid;
 		anchor_points_t() { isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE; }
 		void reset() {
-			isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+			text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+		}
+		void reset(cv::Point p) {
+			text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+			horizontal_key = vertical_key = first_horizontal_tile = first_vertical_tile = last_horizontal_tile = last_vertical_tile = p;
 		}
 		void printout()
 		{

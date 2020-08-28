@@ -7,7 +7,7 @@ QCrosswordScene::QCrosswordScene(QGraphicsView* parent) : QGraphicsScene(parent)
 
 QCrosswordScene::~QCrosswordScene()
 {
-
+	m_info_widget.close();
 }
 
 void QCrosswordScene::drawBackground(QPainter *painter, const QRectF &rect)

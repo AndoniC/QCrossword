@@ -436,6 +436,9 @@ private:
 		if (idx < 0) idx = (int)m_crossword_list.size() - 1;
 		if (idx >= 0 && idx < m_crossword_list.size())
 		{
+			if (row == -1) row = DataManager::getCurrentTile().y;
+			if (col == -1) col = DataManager::getCurrentTile().x;
+
 			//remove from map
 
 			nlohmann::json json_node = m_crossword_list[idx].data.getKeySquare(col, row);
@@ -489,7 +492,7 @@ private:
 						
 						for (int nsquare=0;nsquare<nwords;nsquare++)
 						{
-							m_crossword_list[idx].map_square_key[next_position.y][next_position.x].reset();
+							m_crossword_list[idx].map_square_key[next_position.y][next_position.x].reset(next_position);
 							
 							if (dir == DIRECTION::RIGHT) next_position += cv::Point(1, 0);
 							if (dir == DIRECTION::LEFT) next_position += cv::Point(-1, 0);
@@ -500,7 +503,7 @@ private:
 
 				}
 
-			
+				m_crossword_list[idx].map_square_key[row][col].reset();
 
 
 

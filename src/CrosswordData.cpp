@@ -155,8 +155,10 @@ void CrossWordData::createCrosswordData(crossword_desc_t &desc)
 }
 void CrossWordData::addKey(int row, int col, crossword_key_t &desc)
 {
+	if (!contains(m_data["crossword"]["content"], std::to_string(row), std::to_string(col)))
+		m_data["crossword"]["content"][std::to_string(row)][std::to_string(col)] = nlohmann::json::array();
+	
 
-	m_data["crossword"]["content"][std::to_string(row)][std::to_string(col)] = nlohmann::json::array();
 	nlohmann::json node;
 	node["first_point"] = desc.first_point;
 	node["direction"] = desc.direction;
@@ -180,7 +182,7 @@ void CrossWordData::removeKey(int row, int col)
 
 	if (contains(m_data["crossword"]["content"], std::to_string(row), std::to_string(col)))
 	{
-		m_data["crossword"]["content"][std::to_string(row)][std::to_string(col)] = nlohmann::json::object();
+		m_data["crossword"]["content"][std::to_string(row)][std::to_string(col)].clear();// = nlohmann::json::object();
 	}
 
 }
@@ -213,20 +215,28 @@ void CrossWordData::fillWithContent(std::vector<std::vector<anchor_points_t> > &
 							//one_def["answer"].clear();
 
 							cv::Point first_point,last_point;
-							std::string fp = one_def["first_point"].get<std::string>();
-							std::string dir = one_def["direction"].get<std::string>();
+							std::string fp_aux = one_def["first_point"].get<std::string>();
+							std::string dir_aux = one_def["direction"].get<std::string>();
+							START_POSITION::itype fp = START_POSITION::to_itype(fp_aux);
+							DIRECTION::itype dir = DIRECTION::to_itype(dir_aux);
 
-							if (!fp.compare("right")) first_point = cv::Point(j + 1, i);
-							if (!fp.compare("left")) first_point = cv::Point(j - 1, i);
-							if (!fp.compare("up")) first_point = cv::Point(j, i - 1);
-							if (!fp.compare("down")) first_point = cv::Point(j, i + 1);
+
+							if (fp == START_POSITION::RIGHT) first_point = cv::Point(j + 1, i);
+							else if (fp == START_POSITION::LEFT) first_point = cv::Point(j - 1, i);
+							else if (fp == START_POSITION::TOP) first_point = cv::Point(j, i - 1);
+							else if (fp == START_POSITION::BOTTOM) first_point = cv::Point(j, i + 1);
+							else std::cout << "Error parsing" << std::endl;
 
 							// calculate last point
 							int nwords = one_def["answer"].size();
-							if (!dir.compare("right")) last_point = first_point + cv::Point(nwords, 0);
-							if (!dir.compare("left")) last_point = first_point + cv::Point(-nwords, 0);
-							if (!dir.compare("up")) last_point = first_point + cv::Point(0, -nwords);
-							if (!dir.compare("down")) last_point = first_point + cv::Point(0, nwords);
+							
+							if (dir == DIRECTION::RIGHT) last_point = first_point + cv::Point(nwords, 0);
+							else if (dir == DIRECTION::LEFT) last_point = first_point + cv::Point(-nwords, 0);
+							else if (dir == DIRECTION::UP) last_point = first_point + cv::Point(0, -nwords);
+							else if (dir == DIRECTION::DOWN) last_point = first_point + cv::Point(0, nwords);
+							else
+								std::cout << "Error parsing" << std::endl;
+													
 
 							cv::Point next_position = first_point;
 							one_def["answer"].clear();
@@ -235,10 +245,10 @@ void CrossWordData::fillWithContent(std::vector<std::vector<anchor_points_t> > &
 							{
 								one_def["answer"].push_back(content[next_position.y][next_position.x].text);
 
-								if (!dir.compare("right")) next_position += cv::Point(1, 0);
-								if (!dir.compare("left")) next_position += cv::Point(-1, 0);
-								if (!dir.compare("up")) next_position += cv::Point(0, -1);
-								if (!dir.compare("down")) next_position += cv::Point(0, 1);
+								if (dir == DIRECTION::RIGHT) next_position += cv::Point(1, 0);
+								if (dir == DIRECTION::LEFT) next_position += cv::Point(-1, 0);
+								if (dir == DIRECTION::UP) next_position += cv::Point(0, -1);
+								if (dir == DIRECTION::DOWN) next_position += cv::Point(0, 1);
 							}
 
 						}

@@ -55,6 +55,7 @@ QWidgetMainWindow::~QWidgetMainWindow()
 	delete m_acEditionMode;
 	delete m_acExit;
 	
+	
 
 }
 
