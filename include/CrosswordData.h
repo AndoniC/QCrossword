@@ -68,6 +68,9 @@ public:
 		int isKey;
 		bool isValid;
 		anchor_points_t() { isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE; }
+		void reset() {
+			isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+		}
 		void printout()
 		{
 			std::cout << " --------------------" << std::endl;

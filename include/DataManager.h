@@ -140,6 +140,7 @@ public:
 
 	static bool  isKey(int col = -1, int row = -1, int idx_cw = -1) { return DataManager::instance().isKeyLocal( col, row, idx_cw); }
 	static void clearTile(int col = -1, int row = -1, int idx_cw = -1) { DataManager::instance().clearTileLocal( col, row, idx_cw); }
+	static void removeKey(int col = -1, int row = -1, int idx_cw = -1) { DataManager::instance().removeKeyLocal(col, row, idx_cw); }
 
 private:
 	void clearLocal() {  m_crossword_list.clear(); }
@@ -421,12 +422,96 @@ private:
 	}
 	std::string getSquareTextLocal(int row, int col, int idx)
 	{
+		if (m_crossword_list.empty()) return std::string();
 		if (idx < 0) idx = (int)m_crossword_list.size() - 1;
 		if (idx >=0 && idx < m_crossword_list.size())
 			return m_crossword_list[idx].map_square_key[row][col].text;
 		else return std::string();
 
 	}
+
+	void removeKeyLocal(int row, int col, int idx)
+	{
+		if (m_crossword_list.empty()) return;
+		if (idx < 0) idx = (int)m_crossword_list.size() - 1;
+		if (idx >= 0 && idx < m_crossword_list.size())
+		{
+			//remove from map
+
+			nlohmann::json json_node = m_crossword_list[idx].data.getKeySquare(col, row);
+			if (!json_node.empty())
+			{
+
+				for (auto& definition : json_node.items())
+				{
+					// for each key tile's def
+					nlohmann::json &one_def = definition.value();
+
+
+
+					// key square
+					cv::Point first_point, last_point;
+					std::string fp_aux = one_def["first_point"].get<std::string>();
+					std::string dir_aux = one_def["direction"].get<std::string>();
+					START_POSITION::itype fp = START_POSITION::to_itype(fp_aux);
+					DIRECTION::itype dir = DIRECTION::to_itype(dir_aux);
+
+					if (fp == START_POSITION::RIGHT) first_point = cv::Point(col + 1, row);
+					else if (fp == START_POSITION::LEFT) first_point = cv::Point(col - 1, row);
+					else if (fp == START_POSITION::TOP) first_point = cv::Point(col, row - 1);
+					else if (fp == START_POSITION::BOTTOM) first_point = cv::Point(col, row + 1);
+					else
+						std::cout << "Error parsing" << std::endl;
+
+					// set arrow indicator
+					if (fp == START_POSITION::RIGHT) m_crossword_list[idx].map_square_key[first_point.y][first_point.x].arrow_at_left = DIRECTION::NONE;
+					else if (fp == START_POSITION::LEFT) m_crossword_list[idx].map_square_key[first_point.y][first_point.x].arrow_at_right = DIRECTION::NONE;
+					else if (fp == START_POSITION::TOP) m_crossword_list[idx].map_square_key[first_point.y][first_point.x].arrow_at_bottom = DIRECTION::NONE;
+					else if (fp == START_POSITION::BOTTOM) m_crossword_list[idx].map_square_key[first_point.y][first_point.x].arrow_at_top = DIRECTION::NONE;
+					else
+						std::cout << "Error parsing" << std::endl;
+
+
+					// iterate through squares
+					cv::Point next_position = first_point;
+
+					if (CrossWordData::contains(one_def, "answer"))
+					{
+
+						// calculate last point
+						int nwords = one_def["answer"].size();
+						if (dir == DIRECTION::RIGHT) last_point = first_point + cv::Point(nwords, 0);
+						else if (dir == DIRECTION::LEFT) last_point = first_point + cv::Point(-nwords, 0);
+						else if (dir == DIRECTION::UP) last_point = first_point + cv::Point(0, -nwords);
+						else if (dir == DIRECTION::DOWN) last_point = first_point + cv::Point(0, nwords);
+						else
+							std::cout << "Error parsing" << std::endl;
+						
+						for (int nsquare=0;nsquare<nwords;nsquare++)
+						{
+							m_crossword_list[idx].map_square_key[next_position.y][next_position.x].reset();
+							
+							if (dir == DIRECTION::RIGHT) next_position += cv::Point(1, 0);
+							if (dir == DIRECTION::LEFT) next_position += cv::Point(-1, 0);
+							if (dir == DIRECTION::UP) next_position += cv::Point(0, -1);
+							if (dir == DIRECTION::DOWN) next_position += cv::Point(0, 1);
+						}
+					}
+
+				}
+
+			
+
+
+
+			}
+			// remove from json		
+			m_crossword_list[idx].data.removeKey(row,col);
+
+		}
+
+	}
+
 
 
 	std::string getSquarePlayingTextLocal(int row, int col, int idx)

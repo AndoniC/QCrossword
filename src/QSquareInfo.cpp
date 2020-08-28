@@ -122,7 +122,7 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 	{
 		// we have to remove the key from json structure and from map_square_key structure
 		// in map_square_key we should also delete linked squares?
-		//DataManager::removeKey();
+		DataManager::removeKey();
 
 		if (!ui.textEdit_Def1->toPlainText().isEmpty())
 		{
