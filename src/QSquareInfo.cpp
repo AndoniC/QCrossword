@@ -120,6 +120,9 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 	
 	if (ui.groupBox_Defs->isChecked())
 	{
+		// we have to remove the key from json structure and from map_square_key structure
+		// in map_square_key we should also delete linked squares?
+		//DataManager::removeKey();
 
 		if (!ui.textEdit_Def1->toPlainText().isEmpty())
 		{
@@ -130,7 +133,7 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 			info.direction = ui.comboBox_Def1_Dir->currentText().toLocal8Bit().data();
 			info.first_point = ui.comboBox_Def1_Pos->currentText().toLocal8Bit().data();
 		}
-
+		
 		DataManager::addKey(info);
 
 		if (!ui.textEdit_Def2->toPlainText().isEmpty())

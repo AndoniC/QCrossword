@@ -248,13 +248,14 @@ private:
 		return NULL;
 	}
 
-
+	
 	int createCrosswordMaps(int idx)
 	{
 		// first check if data (json) was loaded
 		crossword_data_t * data = getCrosswordLocal(idx);
 		if (data)
 		{
+			// get crossword info
 			CrossWordData::crossword_desc_t desc = data->data.getDescription();
 			data->map_square_key.clear();
 			data->map_square_key.resize(desc.rows);				
@@ -299,7 +300,7 @@ private:
 							nlohmann::json &one_def = definition.value();
 
 							
-
+						
 							// key square
 							cv::Point first_point,last_point;
 							std::string fp_aux = one_def["first_point"].get<std::string>();
@@ -497,6 +498,7 @@ private:
 	}
 
 	void setSquareTextLocal(std::string t, int row, int col, int idx_cw) {
+		if (m_crossword_list.empty()) return;
 		if (idx_cw == -1) idx_cw = (int)m_crossword_list.size() - 1;
 		if (row == -1) row = current_tile.y;
 		if (col == -1) col = current_tile.x;
@@ -519,6 +521,7 @@ private:
 
 	void updateBwdCurrentTileLocal(int idx_cw)
 	{
+		if (m_crossword_list.empty()) return;
 		if (idx_cw == -1) idx_cw = (int)m_crossword_list.size() - 1;
 
 		if (current_direction == GAME_DIRECTION::HORIZONTAL)
@@ -542,6 +545,8 @@ private:
 
 	void updateFwdCurrentTileLocal(int idx_cw)
 	{
+		if (m_crossword_list.empty()) return;
+		
 		if (idx_cw == -1) idx_cw = (int)m_crossword_list.size() - 1;
 
 		if (current_direction == GAME_DIRECTION::HORIZONTAL)
@@ -554,12 +559,13 @@ private:
 		}
 		else if (current_direction == GAME_DIRECTION::VERTICAL)
 		{
-
+			
 			int last_y = m_crossword_list[idx_cw].map_square_key[current_tile.y][current_tile.x].last_vertical_tile.y;
-			if ((current_tile.y +1) < last_y)
+			if ((current_tile.y + 1) < last_y)
 			{
 				current_tile.y++;
 			}
+			
 		}
 	}
 
@@ -571,6 +577,79 @@ private:
 		m_crossword_list[idx_cw].data.addKey(row, col, info);
 		m_crossword_list[idx_cw].map_square_key[row][col].isKey = true;
 		m_crossword_list[idx_cw].map_square_key[row][col].isValid=true;
+
+		if (m_crossword_list[idx_cw].map_square_key[row][col].text.empty())
+			m_crossword_list[idx_cw].map_square_key[row][col].text += info.def;
+		else
+			m_crossword_list[idx_cw].map_square_key[row][col].text += ";;"+info.def;
+
+
+		cv::Point first_point, last_point;
+		std::string fp_aux = info.first_point;
+		std::string dir_aux = info.direction;
+		START_POSITION::itype fp = START_POSITION::to_itype(fp_aux);
+		DIRECTION::itype dir = DIRECTION::to_itype(dir_aux);
+
+		if (fp == START_POSITION::RIGHT) first_point = cv::Point(col + 1, row);
+		else if (fp == START_POSITION::LEFT) first_point = cv::Point(col - 1, row);
+		else if (fp == START_POSITION::TOP) first_point = cv::Point(col, row - 1);
+		else if (fp == START_POSITION::BOTTOM) first_point = cv::Point(col, row + 1);
+		else
+			std::cout << "Error parsing" << std::endl;
+
+		// set arrow indicator
+		if (fp == START_POSITION::RIGHT)m_crossword_list[idx_cw].map_square_key[first_point.y][first_point.x].arrow_at_left = dir;
+		else if (fp == START_POSITION::LEFT) m_crossword_list[idx_cw].map_square_key[first_point.y][first_point.x].arrow_at_right = dir;
+		else if (fp == START_POSITION::TOP) m_crossword_list[idx_cw].map_square_key[first_point.y][first_point.x].arrow_at_bottom = dir;
+		else if (fp == START_POSITION::BOTTOM) m_crossword_list[idx_cw].map_square_key[first_point.y][first_point.x].arrow_at_top = dir;
+		else
+			std::cout << "Error parsing" << std::endl;
+
+		// iterate through tiles belonging this definition
+		cv::Point next_position = first_point;
+
+		if (!info.answers.empty())
+		{
+
+			// calculate last point
+			int nwords = info.answers.size();
+			if (dir == DIRECTION::RIGHT) last_point = first_point + cv::Point(nwords, 0);
+			else if (dir == DIRECTION::LEFT) last_point = first_point + cv::Point(-nwords, 0);
+			else if (dir == DIRECTION::UP) last_point = first_point + cv::Point(0, -nwords);
+			else if (dir == DIRECTION::DOWN) last_point = first_point + cv::Point(0, nwords);
+			else
+				std::cout << "Error parsing" << std::endl;
+			for (int nel =0 ; nel<(int)info.answers.size();nel++)
+			{
+
+				// for each answer set text for each square belonging to the answer
+				//	std::cout << "key: " << el.value() << '\n';
+				m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].isValid = true;
+				m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].isKey = 0;
+
+				if (dir == DIRECTION::RIGHT || dir == DIRECTION::LEFT)
+				{
+					m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].horizontal_key = cv::Point(col, row);
+					m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].first_horizontal_tile = first_point;
+					m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].last_horizontal_tile = last_point;
+
+				}
+				if (dir == DIRECTION::UP || dir == DIRECTION::DOWN)
+				{
+					m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].vertical_key = cv::Point(col, row);
+					m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].first_vertical_tile = first_point;
+					m_crossword_list[idx_cw].map_square_key[next_position.y][next_position.x].last_vertical_tile = last_point;
+				}
+
+				if (dir == DIRECTION::RIGHT) next_position += cv::Point(1, 0);
+				if (dir == DIRECTION::LEFT) next_position += cv::Point(-1, 0);
+				if (dir == DIRECTION::UP) next_position += cv::Point(0, -1);
+				if (dir == DIRECTION::DOWN) next_position += cv::Point(0, 1);
+			}
+		}
+
+
+
 		// can not access to QCrosswordSquare
 		//if (m_crossword_list[idx_cw].graphical_data[row][col]) 
 		//	m_crossword_list[idx_cw].graphical_data[row][col]->isKey = true;
