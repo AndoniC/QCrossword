@@ -33,7 +33,7 @@ QWidgetMainWindow::QWidgetMainWindow( QWidget *parent)
 	createMenu();
 	
 	//connect(&m_info_widget,SIGNAL(update(TSquareInfo &)),this, SLOT(sltUpdate(TSquareInfo &)));
-	connect(&m_rowscolswidget,SIGNAL(update(int ,int )),this, SLOT(sltUpdate(int , int )));
+	connect(&m_rowscolswidget,SIGNAL(update(int ,int, std::string, std::string, std::string)),this, SLOT(sltUpdate(int , int , std::string, std::string, std::string)));
 	connect(&m_zoomWidget,SIGNAL(press(int , int , int )),this, SLOT(sltDefPressed(int , int , int )));
 	
 	resize(1024, 768);	
@@ -452,7 +452,7 @@ void QWidgetMainWindow::acNew()
 
 	//Create New Crossword
 	// Create data and retrieve index in the array of crosswords
-	int idx = DataManager::createCrossword(m_cols, m_rows);
+	int idx = DataManager::createCrossword(new_crossword_desc.cols, new_crossword_desc.rows, new_crossword_desc.title, new_crossword_desc.topic, UNITS::to_string(UNITS::to_itype(new_crossword_desc.unit)));
 	// Create graphical view of crossword idx
 	m_crossword_viewer.createCrosswordinScene(idx, 40);
 
@@ -1283,8 +1283,13 @@ void QWidgetMainWindow::sltDefPressed(int row, int col, int def_selected)
 //	
 //}
 
-void QWidgetMainWindow::sltUpdate(int rows, int cols)
+void QWidgetMainWindow::sltUpdate(int rows, int cols,std::string title, std::string topic, std::string units)
 {
+	new_crossword_desc.cols = cols;
+	new_crossword_desc.rows = rows;
+	new_crossword_desc.title = title;
+	new_crossword_desc.topic = topic;
+	new_crossword_desc.unit = (!units.compare("LETTER"))?0:1;
 	m_rows = rows;
 	m_cols = cols;
 }

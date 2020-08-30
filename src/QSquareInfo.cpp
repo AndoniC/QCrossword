@@ -140,6 +140,7 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 		{
 
 			info.def = ui.textEdit_Def2->toPlainText().toLocal8Bit().data();
+			info.answers.resize(ui.spinBox_ncasillas2->value());
 			info.direction = ui.comboBox_Def2_Dir->currentText().toLocal8Bit().data();
 			info.first_point = ui.comboBox_Def2_Pos->currentText().toLocal8Bit().data();
 		}

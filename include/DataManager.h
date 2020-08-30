@@ -99,8 +99,8 @@ public:
 	static void remove(int idx) { DataManager::instance().removeLocal(idx); }
 
 
-	static int createCrossword(int cols, int rows) {
-		return DataManager::instance().createCrosswordLocal(cols, rows); }
+	static int createCrossword(int cols, int rows, std::string title=std::string(), std::string topic=std::string(), std::string unit=std::string()) {
+		return DataManager::instance().createCrosswordLocal(cols, rows, title,topic,unit); }
 
 	static crossword_data_t * getCrossword(int idx=-1) {
 		return DataManager::instance().getCrosswordLocal(idx);
@@ -148,12 +148,15 @@ private:
 		m_crossword_list.erase(m_crossword_list.begin() + idx);
 	}
 
-	int createCrosswordLocal(int cols, int rows)
+	int createCrosswordLocal(int cols, int rows, std::string title, std::string topic, std::string unit)
 	{
 		crossword_data_t t;
 		CrossWordData::crossword_desc_t desc;
 		desc.rows = rows;
 		desc.cols = cols;
+		desc.title = title;
+		desc.topic = topic;
+		desc.unit = (int)UNITS::to_itype(unit);
 
 		t.data.createCrosswordData(desc);
 		t.map_square_key.clear();
@@ -709,6 +712,9 @@ private:
 				std::cout << "Error parsing" << std::endl;
 			for (int nel =0 ; nel<(int)info.answers.size();nel++)
 			{
+
+				if (next_position.y > (int)m_crossword_list[idx_cw].map_square_key.size() ||
+					next_position.x > (int)m_crossword_list[idx_cw].map_square_key[next_position.y].size()) continue;
 
 				// for each answer set text for each square belonging to the answer
 				//	std::cout << "key: " << el.value() << '\n';

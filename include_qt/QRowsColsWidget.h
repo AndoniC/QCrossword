@@ -26,7 +26,7 @@ private slots:
 	void on_pushButton_Cancel_clicked();
 
 signals:
-	void update(int rows, int cols);
+	void update(int rows, int cols, std::string title, std::string topic, std::string units);
 
 
 	
