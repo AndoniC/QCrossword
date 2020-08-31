@@ -80,18 +80,63 @@ public:
 		bool isValid;
 		anchor_points_t() { isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
 			break_at_left = break_at_right = break_at_top = break_at_bottom = DIRECTION::NONE;
+			horizontal_key = cv::Point(-1, -1);
+			vertical_key = cv::Point(-1, -1);
 			surround_square = false;
 			circle_number = 0;
 		}
 		void reset() {
 			text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
 			break_at_left = break_at_right = break_at_top = break_at_bottom = DIRECTION::NONE;
+			horizontal_key = cv::Point(-1, -1);
+			vertical_key = cv::Point(-1, -1);
 			surround_square = false; 
 			circle_number = 0;
 		}
 		void reset(cv::Point p) {
 			text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
 			horizontal_key = vertical_key = first_horizontal_tile = first_vertical_tile = last_horizontal_tile = last_vertical_tile = p;
+			horizontal_key = cv::Point(-1, -1);
+			vertical_key = cv::Point(-1, -1);
+
+		}
+		void resetInDirection(cv::Point p, DIRECTION::itype dir) {
+			if (dir == DIRECTION::LEFT || dir == DIRECTION::RIGHT)
+			{
+				// we are erasing key's horizontal content
+				if (vertical_key != cv::Point(-1,-1))
+				{
+					//There is a vertical key
+					horizontal_key = cv::Point(-1,-1);
+					first_horizontal_tile = last_horizontal_tile =  p;
+
+				}
+				else
+				{
+					text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+					horizontal_key = vertical_key = first_horizontal_tile = first_vertical_tile = last_horizontal_tile = last_vertical_tile = p;
+					horizontal_key = vertical_key = cv::Point(-1, -1);
+				}
+			}
+			else
+			{
+				// we are erasing key's horizontal content
+				if (horizontal_key != cv::Point(-1,-1))
+				{
+					//There is a horizontal key
+					//There is a vertical key
+					vertical_key = cv::Point(-1, -1);
+					first_vertical_tile = last_vertical_tile = p;
+				}
+				else
+				{
+					text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+					horizontal_key = vertical_key = first_horizontal_tile = first_vertical_tile = last_horizontal_tile = last_vertical_tile = p;
+					horizontal_key = vertical_key = cv::Point(-1, -1);
+				}
+
+			}
+			
 		}
 		void printout()
 		{

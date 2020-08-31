@@ -495,7 +495,7 @@ private:
 						
 						for (int nsquare=0;nsquare<nwords;nsquare++)
 						{
-							m_crossword_list[idx].map_square_key[next_position.y][next_position.x].reset(next_position);
+							m_crossword_list[idx].map_square_key[next_position.y][next_position.x].resetInDirection(next_position, dir);
 							
 							if (dir == DIRECTION::RIGHT) next_position += cv::Point(1, 0);
 							if (dir == DIRECTION::LEFT) next_position += cv::Point(-1, 0);
@@ -688,6 +688,13 @@ private:
 		else
 			std::cout << "Error parsing" << std::endl;
 
+		if (first_point.y<0 || first_point.x<0 ||
+			first_point.y > (int)m_crossword_list[idx_cw].map_square_key.size() ||
+			first_point.x > (int)m_crossword_list[idx_cw].map_square_key[first_point.y].size())
+		{
+			std::cout << "first point out of margins" << std::endl;
+			return;
+		}
 		// set arrow indicator
 		if (fp == START_POSITION::RIGHT)m_crossword_list[idx_cw].map_square_key[first_point.y][first_point.x].arrow_at_left = dir;
 		else if (fp == START_POSITION::LEFT) m_crossword_list[idx_cw].map_square_key[first_point.y][first_point.x].arrow_at_right = dir;
@@ -739,6 +746,14 @@ private:
 				if (dir == DIRECTION::LEFT) next_position += cv::Point(-1, 0);
 				if (dir == DIRECTION::UP) next_position += cv::Point(0, -1);
 				if (dir == DIRECTION::DOWN) next_position += cv::Point(0, 1);
+
+				if (next_position.y<0 || next_position.x<0 ||
+					next_position.y >(int)m_crossword_list[idx_cw].map_square_key.size() ||
+					next_position.x >(int)m_crossword_list[idx_cw].map_square_key[next_position.y].size())
+				{
+					LOG_F(ERROR,"Next point out of margins...");
+					break;
+				}
 			}
 		}
 

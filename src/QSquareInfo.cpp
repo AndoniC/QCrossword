@@ -149,7 +149,11 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 		emit update();
 	}
 	else
-		DataManager::clearTile();
+	{
+		if (DataManager::isKey())
+			DataManager::removeKey();
+		else DataManager::clearTile();
+	}
 	
 }
 void QSquareInfo::on_pushButton_Close_pressed()
