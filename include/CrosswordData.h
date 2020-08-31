@@ -66,11 +66,28 @@ public:
 		DIRECTION::itype arrow_at_top;
 		DIRECTION::itype arrow_at_bottom;
 
+		// indicates if there is a break at direction
+		DIRECTION::itype break_at_left;
+		DIRECTION::itype break_at_right;
+		DIRECTION::itype break_at_top;
+		DIRECTION::itype break_at_bottom;
+
+		// surround square with a circle and a number below
+		bool surround_square;
+		int circle_number;
+
 		int isKey;
 		bool isValid;
-		anchor_points_t() { isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE; }
+		anchor_points_t() { isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+			break_at_left = break_at_right = break_at_top = break_at_bottom = DIRECTION::NONE;
+			surround_square = false;
+			circle_number = 0;
+		}
 		void reset() {
 			text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;
+			break_at_left = break_at_right = break_at_top = break_at_bottom = DIRECTION::NONE;
+			surround_square = false; 
+			circle_number = 0;
 		}
 		void reset(cv::Point p) {
 			text.clear(); isKey = 0; isValid = false; arrow_at_left = arrow_at_right = arrow_at_top = arrow_at_bottom = DIRECTION::NONE;

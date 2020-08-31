@@ -175,17 +175,19 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 
 
 	if (iskey) {
-		std::vector<std::string> ndefs = ext::string::split(DataManager::getSquareText(idy, idx), ";;");
+		std::wstring def_aux = ext::string::string_to_wstring(DataManager::getSquareText(idy, idx));
+		std::vector<std::wstring> ndefs = ext::string::split(def_aux, L";;",true);
 		/// Draw Identifier if flag is active
 		if (ndefs.size() >= 1)
 		{
-			square_text = ext::string::toUpperCase(ndefs[0]);
+			
+			std::wstring str = ext::string::toUpperCase(ndefs[0]);
 
-			std::locale::global(std::locale(""));
-			std::wcout.imbue(std::locale());
-			auto& f = std::use_facet<std::ctype<wchar_t>>(std::locale());
-			std::wstring str = ext::string::utf8_to_wstring(square_text);
-			f.toupper(&str[0], &str[0] + str.size());
+			//std::locale::global(std::locale(""));
+			//std::wcout.imbue(std::locale());
+			//auto& f = std::use_facet<std::ctype<wchar_t>>(std::locale());
+			//std::wstring str = ext::string::string_to_wstring(square_text);// ext::string::utf8_to_wstring(square_text);
+			//f.toupper(&str[0], &str[0] + str.size());
 			
 			square_text= ext::string::wstring_to_utf8(str);
 		
@@ -204,13 +206,13 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		{
 			
 			painter->drawLine(QPoint(m_width*0.05, m_height*0.5), QPoint(m_width*0.9, m_height*0.5));
-			square_text = ext::string::toUpperCase(ndefs[1]);
+			std::wstring str = ext::string::toUpperCase(ndefs[1]);
 
-			std::locale::global(std::locale(""));
-			std::wcout.imbue(std::locale());
-			auto& f = std::use_facet<std::ctype<wchar_t>>(std::locale());
-			std::wstring str = ext::string::utf8_to_wstring(square_text);
-			f.toupper(&str[0], &str[0] + str.size());
+			//std::locale::global(std::locale(""));
+			//std::wcout.imbue(std::locale());
+			//auto& f = std::use_facet<std::ctype<wchar_t>>(std::locale());
+			//std::wstring str = ext::string::string_to_wstring(square_text);// ext::string::utf8_to_wstring(square_text);
+			//f.toupper(&str[0], &str[0] + str.size());
 			
 			square_text= ext::string::wstring_to_utf8(str);
 		
@@ -287,6 +289,7 @@ void QCrosswordSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		}
 
 
+		
 
 		square_text = ext::string::toUpperCase(square_text);
 
