@@ -3,7 +3,7 @@
 #include "DataManager.h"
 
 QSquareInfo::QSquareInfo( QWidget *parent)
-	: QWidget(parent)
+	: QToolBar(parent)
 {
 	ui.setupUi( this );
 	
@@ -20,7 +20,7 @@ QSquareInfo::QSquareInfo( QWidget *parent)
 	ui.comboBox_Def2_Pos->insertItem(0, START_POSITION::to_string(START_POSITION::TOP).c_str());
 	ui.comboBox_Def2_Pos->insertItem(1, START_POSITION::to_string(START_POSITION::BOTTOM).c_str());
 	ui.comboBox_Def2_Pos->insertItem(2, START_POSITION::to_string(START_POSITION::LEFT).c_str());
-	ui.comboBox_Def2_Pos->insertItem(3, START_POSITION::to_string(START_POSITION::TOP).c_str());
+	ui.comboBox_Def2_Pos->insertItem(3, START_POSITION::to_string(START_POSITION::RIGHT).c_str());
 
 	ui.comboBox_Def1_Dir->insertItem(0, DIRECTION::to_string(DIRECTION::UP).c_str());
 	ui.comboBox_Def1_Dir->insertItem(1, DIRECTION::to_string(DIRECTION::DOWN).c_str());
@@ -132,6 +132,11 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 
 			info.direction = ui.comboBox_Def1_Dir->currentText().toLocal8Bit().data();
 			info.first_point = ui.comboBox_Def1_Pos->currentText().toLocal8Bit().data();
+			if (info.answers.size() != ui.spinBox_ncasillas1->value())
+			{
+				ui.spinBox_ncasillas1->setValue(info.answers.size());
+			}
+
 		}
 		
 		DataManager::addKey(info);
@@ -144,6 +149,10 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 			info.direction = ui.comboBox_Def2_Dir->currentText().toLocal8Bit().data();
 			info.first_point = ui.comboBox_Def2_Pos->currentText().toLocal8Bit().data();
 			DataManager::addKey(info);
+			if (info.answers.size() != ui.spinBox_ncasillas2->value())
+			{
+				ui.spinBox_ncasillas2->setValue(info.answers.size());
+			}
 		}
 		
 		emit update();
