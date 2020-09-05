@@ -711,6 +711,33 @@ private:
 
 			// calculate last point
 			int nwords = info.answers.size();
+
+			//check number of words
+			if (dir == DIRECTION::UP || dir == DIRECTION::DOWN)
+			{
+				int ntotalwordsforthisposition = (int)m_crossword_list[idx_cw].map_square_key.size() - first_point.y;
+				if (nwords > ntotalwordsforthisposition)
+				{
+					nwords = ntotalwordsforthisposition;
+					info.answers.clear();
+					info.answers.resize(ntotalwordsforthisposition);
+
+				}
+			}
+			else
+			{
+				int ntotalwordsforthisposition = (int)m_crossword_list[idx_cw].map_square_key[first_point.y].size() - first_point.x;
+
+				if (nwords > ntotalwordsforthisposition)
+				{
+					nwords = ntotalwordsforthisposition;
+					info.answers.clear();
+					info.answers.resize(ntotalwordsforthisposition);
+
+				}
+			}
+
+
 			if (dir == DIRECTION::RIGHT) last_point = first_point + cv::Point(nwords, 0);
 			else if (dir == DIRECTION::LEFT) last_point = first_point + cv::Point(-nwords, 0);
 			else if (dir == DIRECTION::UP) last_point = first_point + cv::Point(0, -nwords);
@@ -720,8 +747,7 @@ private:
 			for (int nel =0 ; nel<(int)info.answers.size();nel++)
 			{
 
-				if (next_position.y > (int)m_crossword_list[idx_cw].map_square_key.size() ||
-					next_position.x > (int)m_crossword_list[idx_cw].map_square_key[next_position.y].size()) continue;
+				if (next_position.y >= (int)m_crossword_list[idx_cw].map_square_key.size() || next_position.x >= (int)m_crossword_list[idx_cw].map_square_key[next_position.y].size()) break;
 
 				// for each answer set text for each square belonging to the answer
 				//	std::cout << "key: " << el.value() << '\n';
@@ -748,8 +774,8 @@ private:
 				if (dir == DIRECTION::DOWN) next_position += cv::Point(0, 1);
 
 				if (next_position.y<0 || next_position.x<0 ||
-					next_position.y >(int)m_crossword_list[idx_cw].map_square_key.size() ||
-					next_position.x >(int)m_crossword_list[idx_cw].map_square_key[next_position.y].size())
+					next_position.y >(int)m_crossword_list[idx_cw].map_square_key.size()-1 ||
+					next_position.x >(int)m_crossword_list[idx_cw].map_square_key[next_position.y].size()-1)
 				{
 					LOG_F(ERROR,"Next point out of margins...");
 					break;

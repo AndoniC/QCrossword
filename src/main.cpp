@@ -4,6 +4,7 @@
 #include "QWidgetSplashScreen.h"
 #include "QCrosswordView.h"
 #include "ext/ext_parser.h"
+
 using namespace std;
 
 std::vector<std::string> keys =

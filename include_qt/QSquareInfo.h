@@ -1,12 +1,12 @@
 #pragma once
 
 #include <QFont>
-
+#include <QToolBar>
 #include <QWidget>
 #include "ui_squareInfo.h"
 #include "DataManager.h"
 
-class QSquareInfo : public QWidget
+class QSquareInfo : public QToolBar
 {
 	Q_OBJECT
 	
