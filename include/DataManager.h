@@ -177,6 +177,16 @@ private:
 		t.data.loadCrosswordData(_file);
 		m_crossword_list.push_back(t);
 		int idx = m_crossword_list.size() - 1;
+
+	
+		t.playing_crossword.clear();
+		t.playing_crossword.resize(t.data.getDescription().rows);
+		for (int i = 0; i < t.data.getDescription().rows; i++)
+		{
+			t.playing_crossword[i].resize(t.data.getDescription().cols);
+		}
+
+
 		//createCrosswordMaps(idx);
 	
 		return (int)m_crossword_list.size() - 1;
@@ -531,7 +541,11 @@ private:
 					m_crossword_list[idx].data.getTile(row,col)->type == TILETYPE::KEY)
 					return m_crossword_list[idx].data.getText(row,col);
 				else
-					return m_crossword_list[idx].playing_crossword[row][col];
+				{
+					if (row>=0 && row < (int)m_crossword_list[idx].playing_crossword.size() &&
+						col >= 0 && col < (int)m_crossword_list[idx].playing_crossword.size())
+						return m_crossword_list[idx].playing_crossword[row][col];
+				}
 			}
 		}
 		

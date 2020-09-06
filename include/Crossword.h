@@ -85,11 +85,11 @@ public:
 		std::string first_point;
 		std::string direction;
 		std::wstring def;
-		std::wstring topic;
+		bool topic;
 		std::wstring short_def;
 		std::vector< std::wstring > clues;
 		std::vector<std::wstring> answers;
-		crossword_key_t() { }
+		crossword_key_t() { topic = false; }
 	};
 
 	KeyTile(crossword_key_t &desc)

@@ -91,10 +91,11 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 			cdesc.rows = data["crossword"]["description"]["rows"].get<int>();
 			cdesc.title = ext::string::string_to_wstring(data["crossword"]["description"]["title"].get<std::string>());
 			cdesc.topic = ext::string::string_to_wstring(data["crossword"]["description"]["topic"].get<std::string>());
-			cdesc.unit = UNITS::to_itype(data["crossword"]["description"]["units"].get<std::string>());
+			cdesc.unit = UNITS::to_itype(data["crossword"]["description"]["unit"].get<std::string>());
 			clear();
 			createCrosswordData(cdesc);
-
+			
+			
 			if (contains(data["crossword"], "content"))
 			{
 				for (int i = 0; i < cdesc.rows; i++)
@@ -141,7 +142,7 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 							if (contains(definition.value(), "short_def"))
 								kt.short_def = ext::string::string_to_wstring(definition.value()["short_def"].get<std::string>());
 							if (contains(definition.value(), "topic"))
-								kt.topic = ext::string::string_to_wstring(definition.value()["topic"].get<std::string>());
+								kt.topic = definition.value()["topic"].get<bool>();
 
 							if (contains(definition.value(), "answer"))
 							{
@@ -269,8 +270,10 @@ void CrossWord::fillNormalTilesFromKeyTiles()
 	for (int i = 0; i < rows; i++)
 	{
 		int cols = (int)m_crossword_content[i].size();
-		for (int j = 0; i < cols; j++)
+		for (int j = 0; j < cols; j++)
 		{
+			if (!m_crossword_content[i][j]) continue;
+				
 			KeyTile* kt = dynamic_cast<KeyTile*> (m_crossword_content[i][j]);
 			if (kt)
 			{
@@ -293,6 +296,8 @@ void CrossWord::fillNormalTilesFromKeyTiles()
 					else
 						std::cout << "Error parsing" << std::endl;
 
+					if (!m_crossword_content[first_point.y][first_point.x])
+						m_crossword_content[first_point.y][first_point.x] = new NormalTile();
 					NormalTile* nt = dynamic_cast<NormalTile*> (m_crossword_content[first_point.y][first_point.x]);
 					if (nt)
 					{
@@ -320,6 +325,8 @@ void CrossWord::fillNormalTilesFromKeyTiles()
 						if (next_position.y<0 || next_position.y>m_crossword_content.size() - 1 ||
 							next_position.x<0 || next_position.x>m_crossword_content[next_position.y].size() - 1) continue;
 
+						if (!m_crossword_content[next_position.y][next_position.x])
+							m_crossword_content[next_position.y][next_position.x] = new NormalTile();
 						NormalTile* nextPtile = dynamic_cast<NormalTile*> (m_crossword_content[next_position.y][next_position.x]);
 						if (nextPtile)
 						{
