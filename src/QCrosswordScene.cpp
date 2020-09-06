@@ -48,7 +48,7 @@ void QCrosswordScene::createGraphicalCrossword(int idx_data, int h, int w)
 
 	if (cd)
 	{
-		CrossWordData::crossword_desc_t  desc = cd->data.getDescription();
+		CrossWord::crossword_description_t  desc = cd->data.getDescription();
 		squaregrid.resize(desc.rows);
 		cd->graphical_data.resize(desc.rows);
 		for (int i = 0; i < desc.rows; i++)
@@ -57,8 +57,8 @@ void QCrosswordScene::createGraphicalCrossword(int idx_data, int h, int w)
 			cd->graphical_data[i].resize(desc.cols);
 			for (int j = 0; j < desc.cols; j++)
 			{
-				nlohmann::json square = cd->data.getKeySquare(j, i);
-				if (square.empty())
+				KeyTile * square = cd->data.getKeySquare(i, j);
+				if (square)
 					squaregrid[i][j] = new QCrosswordSquare(j, i, w, h,0);
 				else 
 					squaregrid[i][j] = new QCrosswordSquare(j, i, w, h,1);
@@ -123,9 +123,9 @@ void QCrosswordScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 	{
 		if (StatusManager::is(StatusManager::ST_EDITING))
 		{
-			nlohmann::json node = DataManager::getCrossword()->data.getKeySquare(map_pos.x, map_pos.y);
-			if (!node.empty())
-				m_info_widget.fill(node);
+			KeyTile* kt = DataManager::getCrossword()->data.getKeySquare(map_pos.y, map_pos.x);
+			if (kt)
+				m_info_widget.fill(kt);
 			m_info_widget.show();
 		}
 
@@ -135,6 +135,8 @@ void QCrosswordScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
 void QCrosswordScene::changeTo(int pos_x, int pos_y)
 {
+	if (!DataManager::getCrossword()) return;
+
 	if (pos_x == -1 || pos_y == -1)
 	{
 		pos_x = DataManager::getCurrentTile().x;
@@ -152,25 +154,24 @@ void QCrosswordScene::changeTo(int pos_x, int pos_y)
 	DataManager::setCurrentTile(pos_x, pos_y);
 	std::cout << "Current Tile: " << pos_x << " , " << pos_y << std::endl;
 
-	if (DataManager::getCrossword()->map_square_key.empty()) return;
+	if (DataManager::getCrossword()->data.empty()) return;
 
-	CrossWordData::anchor_points_t anchor_point = DataManager::getCrossword()->map_square_key[pos_y][pos_x];
-	anchor_point.printout();
+	NormalTile* nt = dynamic_cast<NormalTile*>(DataManager::getCrossword()->data.getTile(pos_y,pos_x));
 	
 
 	
 
-	if (!anchor_point.isKey && anchor_point.isValid)
+	if (nt && nt->isValid)
 	{
 
 
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
 		{
-			setSemiSelected(anchor_point.first_vertical_tile, anchor_point.last_vertical_tile);
+			setSemiSelected(nt->first_vertical_tile, nt->last_vertical_tile);
 		}
 		else
 		{
-			setSemiSelected(anchor_point.first_horizontal_tile, anchor_point.last_horizontal_tile);
+			setSemiSelected(nt->first_horizontal_tile, nt->last_horizontal_tile);
 		}
 
 	}

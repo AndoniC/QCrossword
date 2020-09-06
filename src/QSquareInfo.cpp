@@ -3,7 +3,7 @@
 #include "DataManager.h"
 
 QSquareInfo::QSquareInfo( QWidget *parent)
-	: QToolBar(parent)
+	: QWidget(parent)
 {
 	ui.setupUi( this );
 	
@@ -47,31 +47,33 @@ int QSquareInfo::getIndex(QComboBox *c, QString text)
 		if (c->currentText().compare(text)==0) return i;
 	}
 }
-void QSquareInfo::fill(nlohmann::json &info)
+void QSquareInfo::fill(KeyTile *kt)
 {
+	if (!kt) return;
 
 	int cont = 0;
-	for (auto& definition : info.items())
+	for (int i=0;i<kt->defs.size();i++)
 	{
+		KeyTile::crossword_key_t & one_def = kt->defs[i];
 		if (cont == 0)
 		{
-			nlohmann::json &one_def = definition.value();
-			std::cout << one_def << std::endl;
-			ui.textEdit_Def1->setText(one_def["def"].get<std::string>().c_str());
-			ui.spinBox_ncasillas1->setValue(one_def["answer"].size());
-			std::string dir = ext::string::toUpperCase(one_def["direction"].get<std::string>());
-			std::string pos = ext::string::toUpperCase(one_def["first_point"].get<std::string>());
+			//one_def.prin_out();
+
+			ui.textEdit_Def1->setText(ext::string::wstring_to_utf8(one_def.def).c_str());
+			ui.spinBox_ncasillas1->setValue(one_def.answers.size());
+			std::string dir = ext::string::toUpperCase(one_def.direction);
+			std::string pos = ext::string::toUpperCase(one_def.first_point);
 			ui.comboBox_Def1_Dir->setCurrentText(dir.c_str());
 			ui.comboBox_Def1_Pos->setCurrentText(pos.c_str());
 		}
 		else if (cont == 1)
 		{
-			nlohmann::json &one_def = definition.value();
-			std::cout << one_def << std::endl; 
-			ui.textEdit_Def2->setText(one_def["def"].get<std::string>().c_str());
-			ui.spinBox_ncasillas2->setValue(one_def["answer"].size());
-			std::string dir = ext::string::toUpperCase(one_def["direction"].get<std::string>().c_str());
-			std::string pos = ext::string::toUpperCase(one_def["first_point"].get<std::string>().c_str());
+			
+			
+			ui.textEdit_Def2->setText(ext::string::wstring_to_utf8(one_def.def).c_str());
+			ui.spinBox_ncasillas2->setValue(one_def.answers.size());
+			std::string dir = ext::string::toUpperCase(one_def.direction);
+			std::string pos = ext::string::toUpperCase(one_def.first_point);
 			ui.comboBox_Def2_Dir->setCurrentText(dir.c_str());
 			ui.comboBox_Def2_Pos->setCurrentText(pos.c_str());
 		}
@@ -116,7 +118,7 @@ void QSquareInfo::on_checkBox_Null_clicked()
 }
 void QSquareInfo::on_pushButtonUpdate_pressed()
 {
-	CrossWordData::crossword_key_t info;
+	KeyTile::crossword_key_t info;
 	
 	if (ui.groupBox_Defs->isChecked())
 	{
@@ -127,7 +129,7 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 		if (!ui.textEdit_Def1->toPlainText().isEmpty())
 		{
 
-			info.def = ui.textEdit_Def1->toPlainText().toLocal8Bit().data();
+			info.def = ext::string::string_to_wstring(ui.textEdit_Def1->toPlainText().toLocal8Bit().data());
 			info.answers.resize(ui.spinBox_ncasillas1->value());
 
 			info.direction = ui.comboBox_Def1_Dir->currentText().toLocal8Bit().data();
@@ -144,7 +146,7 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 		if (!ui.textEdit_Def2->toPlainText().isEmpty())
 		{
 
-			info.def = ui.textEdit_Def2->toPlainText().toLocal8Bit().data();
+			info.def = ext::string::string_to_wstring(ui.textEdit_Def2->toPlainText().toLocal8Bit().data());
 			info.answers.resize(ui.spinBox_ncasillas2->value());
 			info.direction = ui.comboBox_Def2_Dir->currentText().toLocal8Bit().data();
 			info.first_point = ui.comboBox_Def2_Pos->currentText().toLocal8Bit().data();
@@ -155,6 +157,8 @@ void QSquareInfo::on_pushButtonUpdate_pressed()
 			}
 		}
 		
+		// update anchor info in normal tiles
+		DataManager::updateNormalTilesInfoFromKey();
 		emit update();
 	}
 	else

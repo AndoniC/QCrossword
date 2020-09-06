@@ -86,7 +86,7 @@ public:
 	QRowsColsWidget m_rowscolswidget;
 	int m_rows, m_cols;
 	
-	CrossWordData::crossword_desc_t new_crossword_desc; // description obtained from QRowsColsWidget
+	CrossWord::crossword_description_t new_crossword_desc; // description obtained from QRowsColsWidget
 
 	std::vector<std::string> m_crosswords_paths_list;
 	int m_current_crossword_index;
@@ -135,7 +135,7 @@ private slots:
 	//void sltSquareOver(int row,int col,TSquareInfo &info);
 
 	//void sltUpdate(TSquareInfo &info);
-	void sltUpdate(int rows, int cols, std::string title, std::string topic, std::string units);
+	void sltUpdate(int rows, int cols, std::wstring title, std::wstring topic, std::string units);
 	void sltDefPressed(int row, int col, int def_selected);
 	
 

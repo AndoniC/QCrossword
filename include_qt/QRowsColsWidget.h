@@ -6,6 +6,7 @@
 #include <QDialog>
 
 #include "ui_rows_cols_widget.h"
+#include "ext/ext_string.h"
 
 
 class QRowsColsWidget : public QDialog
@@ -26,7 +27,7 @@ private slots:
 	void on_pushButton_Cancel_clicked();
 
 signals:
-	void update(int rows, int cols, std::string title, std::string topic, std::string units);
+	void update(int rows, int cols, std::wstring title, std::wstring topic, std::string units);
 
 
 	

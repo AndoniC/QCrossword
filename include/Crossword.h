@@ -59,6 +59,9 @@ public:
 	virtual void reset() {}
 	virtual void reset(cv::Point) {}
 	virtual void resetInDirection(cv::Point p, DIRECTION::itype dir) {};
+	virtual std::wstring getText() { return text; };
+	virtual void clearText() { text.clear(); }
+	bool isKey() { return type == TILETYPE::KEY; }
 
 
 	virtual void printout()
@@ -91,13 +94,25 @@ public:
 
 	KeyTile(crossword_key_t &desc)
 	{
+		type = TILETYPE::KEY;
 		defs.push_back(desc);
 	}
 	void push_back(crossword_key_t &desc)
 	{
 		defs.push_back(desc);
 	}
+	std::wstring getText()
+	{
+		std::wstring t;
+		for (int i = 0; i < (int)defs.size(); i++)
+		{
+			if (i==0) t += defs[i].def;
+			else t += L";;" + defs[i].def;
+		}
 
+		return t;
+
+	}
 public:
 	std::vector <crossword_key_t> defs;
 	
@@ -188,6 +203,7 @@ public:
 		std::wcout << "    IsValid: " << isValid << std::endl;
 		std::wcout << " --------------------" << std::endl;
 	}
+
 public:
 	cv::Point horizontal_key;
 	cv::Point vertical_key;
@@ -246,7 +262,7 @@ public:
 	~CrossWord();
 	
 	void createCrosswordData(crossword_description_t &desc);
-	crossword_description_t getDescription();
+	crossword_description_t &getDescription();
 	void loadCrosswordData(std::string _json_file_name, int format=0);
 	void saveCrosswordData(std::string _json_file_name, int format = 0);
 
@@ -258,7 +274,9 @@ public:
 	* \brief getKeySquare
 	* Returns null if tile irow,icol is not key
 	*/
-	KeyTile * getKeySquare(int icol, int irow);
+	KeyTile * getKeySquare(int irow, int icol);
+
+	std::wstring getText(int irow, int icol);
 
 	/*!
 	* \brief fillFromKeyTiles
@@ -274,6 +292,33 @@ public:
 	void fillKeyTilesFromNormalTiles();
 
 	void clear() { m_crossword_content.clear(); m_crossword_description.clear(); }
+
+	bool empty() { return m_crossword_content.empty(); }
+
+	Tile *getTile(int irow, int icol);
+
+	void clearText(int irow, int icol);
+
+	/*!
+	* \brief appendText
+	* Append text only if it is normal tile
+	*/
+	void appendText(int irow, int icol, std::wstring t);
+
+	/*!
+	* \brief setText
+	* set text only if it is normal tile
+	*/
+	void setText(int irow, int icol, std::wstring t);
+
+	bool isKey(int irow, int icol);
+
+
+	/*!
+	* \brief updateNormalTilesFromKey
+	* update normal tiles info when a key is added
+	*/
+	void updateNormalTilesFromKey(int irow, int icol);
 
 protected:
 

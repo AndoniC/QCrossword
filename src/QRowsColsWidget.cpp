@@ -15,7 +15,7 @@ QRowsColsWidget::~QRowsColsWidget()
 
 void QRowsColsWidget::on_pushButton_Ok_clicked()
 {
-	emit update(ui.spinBoxRows->value(), ui.spinBoxCols->value(),ui.title->text().toLocal8Bit().data(),ui.topic->text().toLocal8Bit().data(), ui.unit->currentText().toLocal8Bit().data());
+	emit update(ui.spinBoxRows->value(), ui.spinBoxCols->value(),ext::string::string_to_wstring(ui.title->text().toLocal8Bit().data()),ext::string::string_to_wstring(ui.topic->text().toLocal8Bit().data()), ui.unit->currentText().toLocal8Bit().data());
 	this->close();
 }
 void QRowsColsWidget::on_pushButton_Cancel_clicked()

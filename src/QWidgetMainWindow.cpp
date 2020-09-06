@@ -33,7 +33,7 @@ QWidgetMainWindow::QWidgetMainWindow( QWidget *parent)
 	createMenu();
 	
 	//connect(&m_info_widget,SIGNAL(update(TSquareInfo &)),this, SLOT(sltUpdate(TSquareInfo &)));
-	connect(&m_rowscolswidget,SIGNAL(update(int ,int, std::string, std::string, std::string)),this, SLOT(sltUpdate(int , int , std::string, std::string, std::string)));
+	connect(&m_rowscolswidget,SIGNAL(update(int ,int, std::wstring, std::wstring, std::string)),this, SLOT(sltUpdate(int , int , std::wstring, std::wstring, std::string)));
 	connect(&m_zoomWidget,SIGNAL(press(int , int , int )),this, SLOT(sltDefPressed(int , int , int )));
 	
 	resize(1024, 768);	
@@ -42,6 +42,7 @@ QWidgetMainWindow::QWidgetMainWindow( QWidget *parent)
 	m_fullScreen_flag=false;
 	
 	this->setCentralWidget(&m_crossword_viewer);
+	m_statusLeft->setText(GAME_DIRECTION::to_string(DataManager::getCurrentDirection()).c_str());
 }
 
 QWidgetMainWindow::~QWidgetMainWindow()
@@ -326,7 +327,7 @@ int QWidgetMainWindow::load(QString file_name)
 	// Create graphical view of crossword idx
 	m_crossword_viewer.createCrosswordinScene(idx,40);
 	
-	m_statusLeft->setText(DataManager::getCrossword()->data.getDescription().topic.c_str());
+	m_statusLeft->setText(ext::string::wstring_to_utf8(DataManager::getCrossword()->data.getDescription().topic).c_str());
 
 
 	return 1;
@@ -688,6 +689,7 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 	case Qt::Key_Tab:
 	{
 		DataManager::changeDirection();
+		m_statusLeft->setText(GAME_DIRECTION::to_string(DataManager::getCurrentDirection()).c_str());
 		((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
 		break;
 	}
@@ -696,6 +698,8 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
 		{
 			DataManager::changeDirection();
+			m_statusLeft->setText(GAME_DIRECTION::to_string(DataManager::getCurrentDirection()).c_str());
+
 			//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
 			((QCrosswordScene*)m_crossword_viewer.scene())->update();
 		}
@@ -713,6 +717,7 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::VERTICAL)
 		{
 			DataManager::changeDirection();
+			m_statusLeft->setText(GAME_DIRECTION::to_string(DataManager::getCurrentDirection()).c_str());
 //			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
 			((QCrosswordScene*)m_crossword_viewer.scene())->update();
 		}
@@ -732,6 +737,7 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::HORIZONTAL)
 		{
 			DataManager::changeDirection();
+			m_statusLeft->setText(GAME_DIRECTION::to_string(DataManager::getCurrentDirection()).c_str());
 			//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
 			((QCrosswordScene*)m_crossword_viewer.scene())->update();
 		}
@@ -750,6 +756,7 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 		if (DataManager::getCurrentDirection() == GAME_DIRECTION::HORIZONTAL)
 		{
 			DataManager::changeDirection();
+			m_statusLeft->setText(GAME_DIRECTION::to_string(DataManager::getCurrentDirection()).c_str());
 			//			((QCrosswordScene*)m_crossword_viewer.scene())->changeTo();
 			((QCrosswordScene*)m_crossword_viewer.scene())->update();
 		}
@@ -843,7 +850,7 @@ void QWidgetMainWindow::keyPressEvent(QKeyEvent *event )
 	{
 
 		// put text
-		DataManager::appendSquareText(event->text().toUpper().toLocal8Bit().data());
+		DataManager::appendSquareText(ext::string::string_to_wstring(event->text().toUpper().toLocal8Bit().data()));
 		m_crossword_viewer.scene()->update();
 		//if (m_currentSquare!=NULL)
 		//{
@@ -1283,13 +1290,13 @@ void QWidgetMainWindow::sltDefPressed(int row, int col, int def_selected)
 //	
 //}
 
-void QWidgetMainWindow::sltUpdate(int rows, int cols,std::string title, std::string topic, std::string units)
+void QWidgetMainWindow::sltUpdate(int rows, int cols,std::wstring title, std::wstring topic, std::string units)
 {
 	new_crossword_desc.cols = cols;
 	new_crossword_desc.rows = rows;
 	new_crossword_desc.title = title;
 	new_crossword_desc.topic = topic;
-	new_crossword_desc.unit = (!units.compare("LETTER"))?0:1;
+	new_crossword_desc.unit = UNITS::to_itype(units);
 	m_rows = rows;
 	m_cols = cols;
 }

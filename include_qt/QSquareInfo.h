@@ -6,7 +6,7 @@
 #include "ui_squareInfo.h"
 #include "DataManager.h"
 
-class QSquareInfo : public QToolBar
+class QSquareInfo : public QWidget
 {
 	Q_OBJECT
 	
@@ -14,7 +14,7 @@ public:
 	QSquareInfo(  QWidget *parent = 0);
 	~QSquareInfo();
 
-	void fill(nlohmann::json &info);
+	void fill(KeyTile *kt);
 	int getIndex(QComboBox *c, QString text);
 
 

@@ -11,7 +11,6 @@
 #include <QGraphicsView>
 #include "QCrosswordSquare.h"
 #include "DataManager.h"
-#include "CrosswordData.h"
 #include <QGraphicsSceneMouseEvent>
 #include "QSquareInfo.h"
 

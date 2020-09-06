@@ -18,6 +18,18 @@ std::vector<std::string> keys =
 int main(int argc, char *argv[])
 {
 
+
+
+//	nlohmann::json  j(
+//		 ext::string::wstring_to_utf8(L"{Algorín:barreño}")
+//	);
+//
+////	j.parse(s);
+//	std::cout << j.dump();
+//	std::ofstream o("prueba.json");
+//	o << std::setw(4) << j << std::endl;
+//	o.close();
+
 	// ocultar la consola
 //	#ifdef WIN32
 	//	HWND hWnd = GetConsoleWindow();
