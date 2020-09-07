@@ -190,6 +190,7 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 
 void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 {
+	fillKeyTilesFromNormalTiles();
 	std::ofstream o;
 
 	if (format == 0)
@@ -227,7 +228,8 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 					o << "				{" << std::endl;
 					o << "					\""<< std::to_string(j) << "\":" << std::endl;
 					o << "					 [" << std::endl;
-					for (int ndefs = 0; ndefs < kt->defs.size(); ndefs++)
+					int num_definitions = (int)kt->defs.size();
+					for (int ndefs = 0; ndefs <num_definitions; ndefs++)
 					{
 						if (ndefs > 0) o << "," << std::endl;
 					o << "						{" << std::endl;
@@ -239,29 +241,33 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 					o << "							\"topic\":" << "\"" << ext::string::fromBool(kt->defs[ndefs].topic) << "\"," << std::endl;
 					o << "							\"clue\":" << std::endl;
 					o << "							[" << std::endl;
-						for (int k = 0; k < kt->defs[ndefs].clues.size(); k++)
+					int tam = (int)kt->defs[ndefs].clues.size();
+					for (int k = 0; k < tam; k++)
 						{
 							if (k > 0) o << ", " << std::endl;
-							o << "							\"" <<  ext::string::wstring_to_utf8(kt->defs[ndefs].clues[k]) << "\"";
+							o << "								\"" <<  ext::string::wstring_to_utf8(kt->defs[ndefs].clues[k]) << "\"";
 
 						}
+					if (tam > 0) o << std::endl;
 					o << "							]" << std::endl;
-					o << "						\"answer\":" << std::endl;
-					o << "						[" << std::endl;
-					for (int k = 0; k < kt->defs[ndefs].answers.size(); k++)
+					o << "							\"answer\":" << std::endl;
+					o << "							[" << std::endl;
+					tam = (int)kt->defs[ndefs].answers.size();
+					for (int k = 0; k < tam; k++)
 					{
 						if (k > 0) o << ", " << std::endl;
-						o << "							\"" << ext::string::wstring_to_utf8(kt->defs[ndefs].answers[k]) << "\"";
+						o << "								\"" << ext::string::wstring_to_utf8(kt->defs[ndefs].answers[k]) << "\"";
 
 					}
-					o << "]" << std::endl;
-					o << "					}" << std::endl;
+					if (tam > 0) o << std::endl;
+					o << "							]" << std::endl;
+					o << "						}" ;
 					}
 
+					if (num_definitions > 0) o << std::endl;
 
-
-					o << "               ]" << std::endl;
-					o << "          }" << std::endl;
+					o << "					]" << std::endl;
+					o << "				}" << std::endl;
 				}
 
 			}
@@ -440,8 +446,10 @@ void CrossWord::fillKeyTilesFromNormalTiles()
 	for (int i = 0; i < rows; i++)
 	{
 		int cols = (int)m_crossword_content[i].size();
-		for (int j = 0; i < cols; j++)
+		for (int j = 0; j < cols; j++)
 		{
+			if (!m_crossword_content[i][j])
+				continue;
 			KeyTile* kt = dynamic_cast<KeyTile*> (m_crossword_content[i][j]);
 			if (kt)
 			{
