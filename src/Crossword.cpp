@@ -207,11 +207,66 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 		o << "      {" << std::endl;
 		o << "          \"description\":" << std::endl;
 		o << "            {" << std::endl;
-		o << "					 \"title\":" << "\"" << m_crossword_description.title.c_str() << "\"," << std::endl;
+		o << "					 \"title\":" << "\"" << ext::string::wstring_to_utf8(m_crossword_description.title) << "\"," << std::endl;
 		o << "					 \"cols\":" << "" << std::to_string(m_crossword_description.cols) << "," << std::endl;
 		o << "					 \"rows\":" << "" << std::to_string(m_crossword_description.rows) << "," << std::endl;
-		o << "					 \"topic\":" << "\"" << m_crossword_description.topic.c_str() << "\"," << std::endl;
+		o << "					 \"topic\":" << "\"" << ext::string::wstring_to_utf8(m_crossword_description.topic) << "\"," << std::endl;
 		o << "					 \"unit\":" << "\"" << UNITS::to_string(m_crossword_description.unit) << "\"" << std::endl;
+		o << "            }," << std::endl;
+		o << "          \"content\":" << std::endl;
+		o << "            {" << std::endl;
+		for (int i = 0; i < (int)m_crossword_content.size(); i++)
+		{
+			for (int j = 0; j < (int)m_crossword_content[i].size(); j++)
+			{
+				if(m_crossword_content[i][j] == NULL) continue;
+				KeyTile* kt = dynamic_cast<KeyTile*>(m_crossword_content[i][j]);
+				if (kt)
+				{
+					o << "				 \""<< std::to_string(i) << "\":" << std::endl;
+					o << "				{" << std::endl;
+					o << "					\""<< std::to_string(j) << "\":" << std::endl;
+					o << "					 [" << std::endl;
+					for (int ndefs = 0; ndefs < kt->defs.size(); ndefs++)
+					{
+						if (ndefs > 0) o << "," << std::endl;
+					o << "						{" << std::endl;
+						
+					o << "							\"first_point\":" << "\"" << kt->defs[ndefs].first_point << "\"," << std::endl;
+					o << "							\"direction\":" << "\"" << kt->defs[ndefs].direction << "\"," << std::endl;
+					o << "							\"def\":" << "\"" << ext::string::wstring_to_utf8(kt->defs[ndefs].def) << "\"," << std::endl;
+					o << "							\"short_def\":" << "\"" << ext::string::wstring_to_utf8(kt->defs[ndefs].short_def) << "\"," << std::endl;
+					o << "							\"topic\":" << "\"" << ext::string::fromBool(kt->defs[ndefs].topic) << "\"," << std::endl;
+					o << "							\"clue\":" << std::endl;
+					o << "							[" << std::endl;
+						for (int k = 0; k < kt->defs[ndefs].clues.size(); k++)
+						{
+							if (k > 0) o << ", " << std::endl;
+							o << "							\"" <<  ext::string::wstring_to_utf8(kt->defs[ndefs].clues[k]) << "\"";
+
+						}
+					o << "							]" << std::endl;
+					o << "						\"answer\":" << std::endl;
+					o << "						[" << std::endl;
+					for (int k = 0; k < kt->defs[ndefs].answers.size(); k++)
+					{
+						if (k > 0) o << ", " << std::endl;
+						o << "							\"" << ext::string::wstring_to_utf8(kt->defs[ndefs].answers[k]) << "\"";
+
+					}
+					o << "]" << std::endl;
+					o << "					}" << std::endl;
+					}
+
+
+
+					o << "               ]" << std::endl;
+					o << "          }" << std::endl;
+				}
+
+			}
+
+		}
 		o << "            }" << std::endl;
 		o << "      }" << std::endl;
 		o << "}" << std::endl;

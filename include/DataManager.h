@@ -204,7 +204,7 @@ private:
 		// fill crossword data with content in map_square_key
 		//t.data.fillWithContent(t.map_square_key);
 		// save crossword
-		t.data.saveCrosswordData(file);
+		t.data.saveCrosswordData(file,1);
 		
 	
 
