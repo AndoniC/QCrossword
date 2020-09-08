@@ -57,9 +57,73 @@ void CrossWord::createCrosswordData(crossword_description_t &desc)
 }
 
 
+int findOneOf(std::wstring & json, int pos, std::wstring &out)
+{
+	bool found = false;
+	int cont = pos;
+	int loc = -1;
+	
+	while (!found)
+	{
+		if (json.at(cont) == L'{' || json.at(cont) == L']' || json.at(cont) == L'[' || json.at(cont) == L'}')
+		{
+			loc = cont;
+			found = true;
+			out = json.at(cont);
+		}
+		if (!found) cont++;
 
+	}
+	if (found)
+		return cont;
+	else return -1;
+}
 
+bool closing(std::wstring &str0, std::wstring &str1)
+{
+	if (str0 == L'{' && str1 == L'}') return true;
+	if (str0 == L'[' && str1 == L']') return true;
+	return false;
+}
 
+void findNext(std::wstring& json, std::vector< std::vector <std::pair<int, int> > > &list, std::wstring &first, int pos, int &pos_out)
+{
+
+	// to be done recursively
+	if (pos > json.length())
+	{
+		pos_out = -1;
+		return;
+	}
+	std::wstring out; 
+	pos_out = findOneOf(json, pos, out);
+	std::wstring current_text = json.substr(pos, pos_out);
+	if (pos_out == -1)
+	{
+		pos_out = -1;
+		return;
+	}
+	int pout= pos_out+1;
+	int pout1= pout;
+	bool found = false;
+	while (!found)
+	{
+		found = closing(first, out);
+		if (!found)
+		{
+			findNext(json, list, out, pout, pout1);
+			if (pout1 == -1) break;
+			pout = pout1 + 1;
+		}
+	}
+	if (found)
+	{
+		// add segment
+		pos_out = pout + 1;
+	}
+	
+	
+}
 
 void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 {
@@ -182,8 +246,21 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 	}
 	else if (format == 1)
 	{
+		std::vector< std::vector <std::pair<int, int> > > indentations;
+
+
 		// load from json (wstring)
-		ext::string::readUTF8File(_json_file_name.c_str());
+		std::wstring file_content = ext::string::readUTF8File(_json_file_name.c_str());
+		int pos = file_content.find(L'{');
+		std::wstring first = L"{";
+		int pout;
+		findNext(file_content, indentations, first, pos+1,pout);
+		
+
+
+
+
+
 	}
 
 }

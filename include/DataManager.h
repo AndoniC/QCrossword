@@ -174,7 +174,7 @@ private:
 	int loadLocal(std::string _file)
 	{
 		crossword_data_t t;
-		t.data.loadCrosswordData(_file);
+		t.data.loadCrosswordData(_file, 1);
 		m_crossword_list.push_back(t);
 		int idx = m_crossword_list.size() - 1;
 
