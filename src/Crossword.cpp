@@ -65,11 +65,12 @@ int findOneOf(std::wstring & json, int pos, std::wstring &out)
 	
 	while (!found)
 	{
-		if (json.at(cont) == L'{' || json.at(cont) == L']' || json.at(cont) == L'[' || json.at(cont) == L'}')
+		wchar_t c = json.at(cont);
+		if (c == L'{' || c == L']' || c == L'[' || c == L'}')
 		{
 			loc = cont;
 			found = true;
-			out = json.at(cont);
+			out = c;
 		}
 		if (!found) cont++;
 
@@ -86,22 +87,22 @@ bool closing(std::wstring &str0, std::wstring &str1)
 	return false;
 }
 
-void findNext(std::wstring& json, std::vector< std::vector <std::pair<int, int> > > &list, std::wstring &first, int pos, int &pos_out)
+std::wstring findNext(std::wstring& json, std::vector< std::vector <std::pair<int, int> > > &list, std::wstring &first, int pos, int &pos_out)
 {
 
 	// to be done recursively
 	if (pos > json.length())
 	{
 		pos_out = -1;
-		return;
+		return std::wstring();
 	}
 	std::wstring out; 
 	pos_out = findOneOf(json, pos, out);
-	std::wstring current_text = json.substr(pos, pos_out);
+	std::wstring current_text = json.substr(pos, pos_out-pos);
 	if (pos_out == -1)
 	{
 		pos_out = -1;
-		return;
+		return std::wstring();
 	}
 	int pout= pos_out+1;
 	int pout1= pout;
@@ -111,17 +112,22 @@ void findNext(std::wstring& json, std::vector< std::vector <std::pair<int, int> 
 		found = closing(first, out);
 		if (!found)
 		{
-			findNext(json, list, out, pout, pout1);
+			std::wstring aux;
+			aux=findNext(json, list, out, pout, pout1);
+			
 			if (pout1 == -1) break;
 			pout = pout1 + 1;
+			out = aux;
 		}
 	}
 	if (found)
 	{
 		// add segment
-		pos_out = pout + 1;
+		pos_out = findOneOf(json, pout + 1, out);
+		return out;
 	}
 	
+	return std::wstring();
 	
 }
 
