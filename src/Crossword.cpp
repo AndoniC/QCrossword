@@ -87,7 +87,7 @@ bool closing(std::wstring &str0, std::wstring &str1)
 	return false;
 }
 
-std::wstring findNext(std::wstring& json, std::vector< std::vector <CrossWord::nodo_json > > &list, int parent, std::wstring &first, int pos, int &pos_out)
+std::wstring findNext(std::wstring& json, std::vector< std::vector <CrossWord::nodo_json > > &list,int id_nodo_parent, int parent, std::wstring &first, int pos, int &pos_out)
 {
 
 	// to be done recursively
@@ -97,6 +97,7 @@ std::wstring findNext(std::wstring& json, std::vector< std::vector <CrossWord::n
 		return std::wstring();
 	}
 	int this_level = parent + 1;
+	int this_id = 0;
 
 	std::wstring out; 
 	pos_out = findOneOf(json, pos, out);
@@ -116,7 +117,7 @@ std::wstring findNext(std::wstring& json, std::vector< std::vector <CrossWord::n
 		if (!found)
 		{
 			std::wstring aux;
-			aux=findNext(json, list, this_level, out, pout, pout1);
+			aux=findNext(json, list, this_id, this_level, out, pout, pout1);
 			
 			if (pout1 == -1) break;
 			pout = pout1 + 1;
@@ -263,8 +264,9 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 		int pos = file_content.find(L'{');
 		std::wstring first = L"{";
 		int pout;
-		int level = 0;
-		findNext(file_content, indentations, level, first, pos+1,pout);
+		int level = 0;   // this is the first index of the indentations matrix
+		int id = 0; // this is the second index of the indentations matrix
+		findNext(file_content, indentations,id, level, first, pos+1,pout);
 		
 
 
