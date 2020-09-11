@@ -236,6 +236,16 @@ class CrossWord
 {
 	
 public:
+
+	struct nodo_json
+	{
+		std::vector<int> childs;
+		int parent;
+		std::string name;
+		std::string rest;
+		nodo_json() { parent = 0; }
+		nodo_json(int p) { parent = p; }
+	};
 	struct crossword_description_t
 	{
 		std::wstring title;
@@ -325,6 +335,8 @@ protected:
 	crossword_description_t m_crossword_description;
 	
 	std::vector<std::vector< Tile *> > m_crossword_content;
+	
+
 	
 };
 

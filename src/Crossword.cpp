@@ -87,7 +87,7 @@ bool closing(std::wstring &str0, std::wstring &str1)
 	return false;
 }
 
-std::wstring findNext(std::wstring& json, std::vector< std::vector <std::pair<int, int> > > &list, std::wstring &first, int pos, int &pos_out)
+std::wstring findNext(std::wstring& json, std::vector< std::vector <CrossWord::nodo_json > > &list, int parent, std::wstring &first, int pos, int &pos_out)
 {
 
 	// to be done recursively
@@ -96,6 +96,8 @@ std::wstring findNext(std::wstring& json, std::vector< std::vector <std::pair<in
 		pos_out = -1;
 		return std::wstring();
 	}
+	int this_level = parent + 1;
+
 	std::wstring out; 
 	pos_out = findOneOf(json, pos, out);
 	std::wstring current_text = json.substr(pos, pos_out-pos);
@@ -107,13 +109,14 @@ std::wstring findNext(std::wstring& json, std::vector< std::vector <std::pair<in
 	int pout= pos_out+1;
 	int pout1= pout;
 	bool found = false;
+	
 	while (!found)
 	{
 		found = closing(first, out);
 		if (!found)
 		{
 			std::wstring aux;
-			aux=findNext(json, list, out, pout, pout1);
+			aux=findNext(json, list, this_level, out, pout, pout1);
 			
 			if (pout1 == -1) break;
 			pout = pout1 + 1;
@@ -252,7 +255,7 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 	}
 	else if (format == 1)
 	{
-		std::vector< std::vector <std::pair<int, int> > > indentations;
+		std::vector< std::vector <CrossWord::nodo_json > > indentations;
 
 
 		// load from json (wstring)
@@ -260,7 +263,8 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 		int pos = file_content.find(L'{');
 		std::wstring first = L"{";
 		int pout;
-		findNext(file_content, indentations, first, pos+1,pout);
+		int level = 0;
+		findNext(file_content, indentations, level, first, pos+1,pout);
 		
 
 
