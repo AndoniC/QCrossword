@@ -3,6 +3,126 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include "JSON.h"
+
+
+int findOneOf(std::wstring & json, int pos, std::wstring &out)
+{
+	bool found = false;
+	int cont = pos;
+	int loc = -1;
+
+	while (!found)
+	{
+		wchar_t c = json.at(cont);
+		if (c == L'{' || c == L']' || c == L'[' || c == L'}' || c == L':' || c == L',')
+		{
+			loc = cont;
+			found = true;
+			out = c;
+		}
+		if (!found) cont++;
+
+	}
+	if (found)
+		return cont;
+	else return -1;
+}
+
+bool closing(std::wstring &str0, std::wstring &str1)
+{
+	if (str0 == L'{' && str1 == L'}') return true;
+	if (str0 == L'[' && str1 == L']') return true;
+	return false;
+}
+
+std::wstring findNext(std::wstring& json, std::map<int, std::vector <CrossWord::nodo_json > > &list, int &id_nodo, int parent_id, int parent_level, std::wstring &current_token, int pos, int &pos_out)
+{
+
+	// to be done recursively
+	if (pos > json.length())
+	{
+		pos_out = -1;
+		return std::wstring();
+	}
+	int this_level = parent_level;
+
+
+	std::wstring next_token;
+	pos_out = findOneOf(json, pos, next_token);
+
+	// Errors
+	if ((current_token == L':' && next_token == L'}') ||
+		(current_token == L'}' && next_token == L'}') ||
+		(current_token == L']' && next_token == L'}'))
+	{
+		return std::wstring();
+	}
+	if ((current_token == L',' && next_token == L'}') ||
+		(current_token == L':' && next_token == L']') ||
+		(current_token == L',' && next_token == L']'))
+	{
+		std::cout << "Format error." << std::endl;
+		return std::wstring();
+	}
+
+	if (current_token == L'}' && next_token == L',' || current_token == L']' && next_token == L',')
+	{
+		int pout1;
+		findNext(json, list, id_nodo, id_nodo, this_level, next_token, pos_out + 1, pout1);
+	}
+
+	else if (current_token == L':' && next_token == L',')
+	{
+		list[this_level][id_nodo].rest = json.substr(pos, pos_out - pos);
+	}
+	else if ((current_token == L':' && next_token == L'{') || (current_token == L':' && next_token == L'[') ||
+		(current_token == L'{' && next_token == L'[') || (current_token == L'[' && next_token == L'{') ||
+		(current_token == L'[' && next_token == L'[') || (current_token == L'{' && next_token == L'{'))
+	{
+		this_level = parent_level + 1;
+		/*bool found = false;
+		std::wstring first_token, out_token;
+		first_token = next_token;
+		while (!found)
+		{
+		out_token = findNext(json, list, id_nodo, id_nodo, this_level, next_token, pos, pout1);
+
+		found = closing(first_token, out_token);
+		if (!found)
+		{
+
+
+		}
+		}
+
+		if (found)
+		{
+		}*/
+
+	}
+	else if (current_token == L'{' && next_token == L':')
+	{
+
+		list[this_level].push_back(CrossWord::nodo_json(parent_id, parent_level, json.substr(pos, pos_out - pos)));
+		id_nodo = list[this_level].size() - 1;
+	}
+	else if (current_token == L',' && next_token == L':')
+	{
+		list[this_level].push_back(CrossWord::nodo_json(parent_id, parent_level, json.substr(pos, pos_out - pos)));
+		id_nodo = list[this_level].size() - 1;
+
+	}
+	int pout1;
+
+	findNext(json, list, id_nodo, id_nodo, this_level, next_token, pos_out + 1, pout1);
+
+	return std::wstring();
+
+}
+
+
+
 
 
 CrossWord::CrossWord()
@@ -57,83 +177,9 @@ void CrossWord::createCrosswordData(crossword_description_t &desc)
 }
 
 
-int findOneOf(std::wstring & json, int pos, std::wstring &out)
-{
-	bool found = false;
-	int cont = pos;
-	int loc = -1;
-	
-	while (!found)
-	{
-		wchar_t c = json.at(cont);
-		if (c == L'{' || c == L']' || c == L'[' || c == L'}')
-		{
-			loc = cont;
-			found = true;
-			out = c;
-		}
-		if (!found) cont++;
 
-	}
-	if (found)
-		return cont;
-	else return -1;
-}
 
-bool closing(std::wstring &str0, std::wstring &str1)
-{
-	if (str0 == L'{' && str1 == L'}') return true;
-	if (str0 == L'[' && str1 == L']') return true;
-	return false;
-}
 
-std::wstring findNext(std::wstring& json, std::vector< std::vector <CrossWord::nodo_json > > &list,int id_nodo_parent, int parent, std::wstring &first, int pos, int &pos_out)
-{
-
-	// to be done recursively
-	if (pos > json.length())
-	{
-		pos_out = -1;
-		return std::wstring();
-	}
-	int this_level = parent + 1;
-	int this_id = 0;
-
-	std::wstring out; 
-	pos_out = findOneOf(json, pos, out);
-	std::wstring current_text = json.substr(pos, pos_out-pos);
-	if (pos_out == -1)
-	{
-		pos_out = -1;
-		return std::wstring();
-	}
-	int pout= pos_out+1;
-	int pout1= pout;
-	bool found = false;
-	
-	while (!found)
-	{
-		found = closing(first, out);
-		if (!found)
-		{
-			std::wstring aux;
-			aux=findNext(json, list, this_id, this_level, out, pout, pout1);
-			
-			if (pout1 == -1) break;
-			pout = pout1 + 1;
-			out = aux;
-		}
-	}
-	if (found)
-	{
-		// add segment
-		pos_out = findOneOf(json, pout + 1, out);
-		return out;
-	}
-	
-	return std::wstring();
-	
-}
 
 void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 {
@@ -256,7 +302,7 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 	}
 	else if (format == 1)
 	{
-		std::vector< std::vector <CrossWord::nodo_json > > indentations;
+		std::map<int, std::vector <CrossWord::nodo_json > > indentations;
 
 
 		// load from json (wstring)
@@ -266,7 +312,7 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 		int pout;
 		int level = 0;   // this is the first index of the indentations matrix
 		int id = 0; // this is the second index of the indentations matrix
-		findNext(file_content, indentations,id, level, first, pos+1,pout);
+		findNext(file_content, indentations,id,id, level, first, pos+1,pout);
 		
 
 
@@ -274,7 +320,45 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 
 
 	}
+	else if (format == 2)
+	{
+		std::wstring file_content = ext::string::readUTF8File(_json_file_name.c_str());
+		JSONValue *value = JSON::Parse(file_content.c_str());
+		if (!value || value->IsObject() == false)
+		{
+			std::cout << "The root element is not an object, did you change the example?\r\n" << std::endl;
+		}
+		else
+		{
+			JSONObject root;
+			root = value->AsObject();
 
+			// Retrieving a string
+			if (root.find(L"crossword") != root.end() && root[L"crossword"]->IsObject())
+			{
+				JSONObject crossword;
+				crossword = root[L"crossword"]->AsObject();
+				if (crossword.find(L"description") != crossword.end() && crossword[L"description"]->IsObject())
+				{
+					JSONObject description;
+					description = crossword[L"description"]->AsObject();
+					crossword_description_t cdesc;
+					cdesc.cols = description[L"cols"]->AsNumber();
+					cdesc.rows = description[L"rows"]->AsNumber();
+					cdesc.title = description[L"title"]->AsString();
+					cdesc.topic = description[L"topic"]->AsString();
+					cdesc.unit = UNITS::to_itype(description[L"unit"]->AsString());
+					clear();
+					createCrosswordData(cdesc);
+
+				}
+				
+			}
+
+			
+		}
+
+	}
 }
 
 void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
@@ -305,18 +389,29 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 		o << "            }," << std::endl;
 		o << "          \"content\":" << std::endl;
 		o << "            {" << std::endl;
-		for (int i = 0; i < (int)m_crossword_content.size(); i++)
+		bool first_row_already_written = false;
+		for (int i = 0,nrow=0; i < (int)m_crossword_content.size(); i++)
 		{
-			for (int j = 0; j < (int)m_crossword_content[i].size(); j++)
+			if (first_row_already_written) o << "," << std::endl;
+			first_row_already_written = true;
+			o << "				 \"" << std::to_string(i) << "\":" << std::endl;
+			o << "				{" << std::endl;
+
+			bool first_col_already_written = false;
+			
+			for (int j = 0,ncol=0; j < (int)m_crossword_content[i].size(); j++)
 			{
 				if(m_crossword_content[i][j] == NULL) continue;
 				KeyTile* kt = dynamic_cast<KeyTile*>(m_crossword_content[i][j]);
 				if (kt)
 				{
-					o << "				 \""<< std::to_string(i) << "\":" << std::endl;
-					o << "				{" << std::endl;
+					if (first_col_already_written) o << "," << std::endl;
 					o << "					\""<< std::to_string(j) << "\":" << std::endl;
 					o << "					 [" << std::endl;
+
+					
+					first_col_already_written = true;
+
 					int num_definitions = (int)kt->defs.size();
 					for (int ndefs = 0; ndefs <num_definitions; ndefs++)
 					{
@@ -338,7 +433,7 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 
 						}
 					if (tam > 0) o << std::endl;
-					o << "							]" << std::endl;
+					o << "							]," << std::endl;
 					o << "							\"answer\":" << std::endl;
 					o << "							[" << std::endl;
 					tam = (int)kt->defs[ndefs].answers.size();
@@ -356,9 +451,9 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 					if (num_definitions > 0) o << std::endl;
 
 					o << "					]" << std::endl;
-					o << "				}" << std::endl;
+					
 				}
-
+				o << "				}";
 			}
 
 		}

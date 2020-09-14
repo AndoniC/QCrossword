@@ -240,11 +240,13 @@ public:
 	struct nodo_json
 	{
 		std::vector<int> childs;
-		int parent;
-		std::string name;
-		std::string rest;
-		nodo_json() { parent = 0; }
-		nodo_json(int p) { parent = p; }
+		int parent_id;
+		int parent_level;
+		std::wstring name;
+		std::wstring rest;
+		nodo_json() { parent_id = parent_level = 0; }
+		nodo_json(int pi, int pl) { parent_id = pi; parent_level = pl; }
+		nodo_json(int pi,int pl, std::wstring pn) { parent_id = pi; parent_level = pl;  name = pn; }
 	};
 	struct crossword_description_t
 	{
