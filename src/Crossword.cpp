@@ -336,13 +336,14 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 			// Retrieving a string
 			if (root.find(L"crossword") != root.end() && root[L"crossword"]->IsObject())
 			{
+				crossword_description_t cdesc;
 				JSONObject crossword;
 				crossword = root[L"crossword"]->AsObject();
 				if (crossword.find(L"description") != crossword.end() && crossword[L"description"]->IsObject())
 				{
 					JSONObject description;
 					description = crossword[L"description"]->AsObject();
-					crossword_description_t cdesc;
+					
 					cdesc.cols = description[L"cols"]->AsNumber();
 					cdesc.rows = description[L"rows"]->AsNumber();
 					cdesc.title = description[L"title"]->AsString();
@@ -352,12 +353,105 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 					createCrosswordData(cdesc);
 
 				}
-				
+
+				if (crossword.find(L"content") != crossword.end() && crossword[L"content"]->IsObject())
+				{
+					JSONObject content;
+					content = crossword[L"content"]->AsObject();
+					for (int i = 0; i < cdesc.rows; i++)
+					{
+						for (int j = 0; j < cdesc.cols; j++)
+						{
+							if (content.find(std::to_wstring(i)) != content.end() && content[std::to_wstring(i)]->IsObject())
+							{
+								JSONObject row;
+								row = content[std::to_wstring(i)]->AsObject();
+
+								if (row.find(std::to_wstring(j)) != row.end() && row[std::to_wstring(j)]->IsArray())
+								{
+									int count = 0;
+									JSONArray  col;
+									col = row[std::to_wstring(j)]->AsArray();
+									for (unsigned int def_idx = 0; def_idx < col.size(); def_idx++)
+									{
+										JSONObject  def_item;
+										def_item = col[def_idx]->AsObject();
+
+										KeyTile::crossword_key_t kt;
+										count++;
+										kt.first_point = ext::string::wstring_to_string(def_item[L"first_point"]->AsString());
+										if (kt.first_point.empty())
+										{
+											LOG_F(ERROR, "First_point not detected");
+										}
+										else
+										{
+											START_POSITION::itype fp_aux = START_POSITION::to_itype(kt.first_point);
+											if (fp_aux == START_POSITION::__COUNT)
+												std::cout << "Error parsing " << i << " , " << j << " position, def " << count << std::endl;
+											kt.first_point = START_POSITION::to_string(fp_aux).c_str();
+										}
+
+										kt.direction = ext::string::wstring_to_string(def_item[L"direction"]->AsString());
+										if (kt.direction.empty())
+										{
+											LOG_F(ERROR, "First_point not detected");
+										}
+										else
+										{
+											DIRECTION::itype dir_aux = DIRECTION::to_itype(kt.direction);
+											if (dir_aux == DIRECTION::__COUNT)
+												std::cout << "Error parsing " << i << " , " << j << " position, def " << count << std::endl;
+											kt.direction = DIRECTION::to_string(dir_aux).c_str();
+										}
+
+										kt.def = def_item[L"def"]->AsString();
+										if (def_item.find(L"short_def") != def_item.end() && def_item[L"short_def"]->IsString())
+											kt.short_def = def_item[L"short_def"]->AsString();
+										if (def_item.find(L"topic") != def_item.end() && def_item[L"topic"]->IsBool())
+											kt.topic = def_item[L"topic"]->AsBool();
+
+										if (def_item.find(L"answer") != def_item.end() && def_item[L"answer"]->IsArray())
+										{
+											JSONArray  answerList;
+											answerList = def_item[L"answer"]->AsArray();
+											int nwords = answerList.size();
+
+											for (unsigned int answeridx = 0; answeridx < answerList.size(); answeridx++)
+											{
+												std::wstring answer_item = answerList[answeridx]->AsString();
+												kt.answers.push_back(answer_item);
+											}
+										}
+
+
+										if (def_item.find(L"clues") != def_item.end() && def_item[L"clues"]->IsArray())
+										{
+											JSONArray  cluesList;
+											cluesList = def_item[L"clues"]->AsArray();
+											int nwords = cluesList.size();
+
+											for (unsigned int clueidx = 0; clueidx < cluesList.size(); clueidx++)
+											{
+												std::wstring clue_item = cluesList[clueidx]->AsString();
+												kt.clues.push_back(clue_item);
+											}
+										}
+
+										this->addKey(i, j, kt);
+
+
+									}
+								}
+							}
+						}
+					}
+					// Once we have set key tiles let's fill non-key tiles content
+					fillNormalTilesFromKeyTiles();
+				}
 			}
-
-			
+				
 		}
-
 	}
 }
 
@@ -390,7 +484,7 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 		o << "          \"content\":" << std::endl;
 		o << "            {" << std::endl;
 		bool first_row_already_written = false;
-		for (int i = 0,nrow=0; i < (int)m_crossword_content.size(); i++)
+		for (int i = 0; i < (int)m_crossword_content.size(); i++)
 		{
 			if (first_row_already_written) o << "," << std::endl;
 			first_row_already_written = true;
@@ -399,7 +493,7 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 
 			bool first_col_already_written = false;
 			
-			for (int j = 0,ncol=0; j < (int)m_crossword_content[i].size(); j++)
+			for (int j = 0; j < (int)m_crossword_content[i].size(); j++)
 			{
 				if(m_crossword_content[i][j] == NULL) continue;
 				KeyTile* kt = dynamic_cast<KeyTile*>(m_crossword_content[i][j]);
@@ -450,11 +544,11 @@ void CrossWord::saveCrosswordData(std::string _json_file_name, int format)
 
 					if (num_definitions > 0) o << std::endl;
 
-					o << "					]" << std::endl;
+					o << "					]";
 					
 				}
-				o << "				}";
 			}
+			o << std::endl << "				}";
 
 		}
 		o << "            }" << std::endl;
