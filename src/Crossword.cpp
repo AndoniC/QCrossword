@@ -352,6 +352,7 @@ void CrossWord::loadCrosswordData(std::string _json_file_name, int format)
 					clear();
 					createCrosswordData(cdesc);
 
+					
 				}
 
 				if (crossword.find(L"content") != crossword.end() && crossword[L"content"]->IsObject())

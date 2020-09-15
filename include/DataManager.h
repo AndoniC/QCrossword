@@ -175,8 +175,7 @@ private:
 	{
 		crossword_data_t t;
 		t.data.loadCrosswordData(_file, 2);
-		m_crossword_list.push_back(t);
-		int idx = m_crossword_list.size() - 1;
+		
 
 	
 		t.playing_crossword.clear();
@@ -186,6 +185,9 @@ private:
 			t.playing_crossword[i].resize(t.data.getDescription().cols);
 		}
 
+
+		m_crossword_list.push_back(t);
+		int idx = m_crossword_list.size() - 1;
 
 		//createCrosswordMaps(idx);
 	
@@ -597,7 +599,8 @@ private:
 			}
 			else if (StatusManager::is(StatusManager::ST_PLAYING) || StatusManager::is(StatusManager::ST_PLAYING_WITH_CLUES))
 			{
-				m_crossword_list[idx_cw].playing_crossword[row][col] += t;
+				if (!m_crossword_list[idx_cw].playing_crossword.empty())
+					m_crossword_list[idx_cw].playing_crossword[row][col] += t;
 			}
 
 		}
