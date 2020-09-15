@@ -225,29 +225,43 @@ private:
 
 		crossword_data_t t;
 		t = m_crossword_list[index];
-		nlohmann::json json_playing_info;
 
-		json_playing_info["source"] = file;
-
-		// save crossword
-		json_playing_info["content"] = nlohmann::json::array();
-		for (int i = 0; i < t.playing_crossword.size(); i++)
-		{
-			for (int j = 0; j < t.playing_crossword[i].size(); j++)
-			{
-				nlohmann::json node;
-				if (!t.playing_crossword[i][j].empty())
-				{
-					node[std::to_string(i)][std::to_string(j)] = t.playing_crossword[i][j];
-					json_playing_info["content"].push_back(node);
-				}
-			}
-		}
 
 		std::string fname_game = path + fname + "_game." + ext;
-		std::ofstream o(fname_game);
-		o << std::setw(4) << json_playing_info << std::endl;
+		std::ofstream o;
+		o.open(fname_game.c_str(), std::ios::out | std::ios::binary);
+		// save description
+		o << "{  " << std::endl;
+		o << "	 \"source\":" << "\"" << ext::string::wstring_to_utf8(ext::string::string_to_wstring(file)) << "\"," << std::endl;
+		o << "   \"content\":" << std::endl;
+		o << "     {" << std::endl;
+		bool first_row_already_written = false;
+		for (int i = 0; i < (int)t.playing_crossword.size(); i++)
+		{
+			if (first_row_already_written) o << "," << std::endl;
+			first_row_already_written = true;
+			o << "		 \"" << std::to_string(i) << "\":" << std::endl;
+			o << "	  	   {" << std::endl;
+
+			bool first_col_already_written = false;
+
+			for (int j = 0; j < (int)t.playing_crossword[i].size(); j++)
+			{
+				if (t.playing_crossword[i][j].empty()) continue;
+				
+				if (first_col_already_written) o << "," << std::endl;
+				o << "					\"" << std::to_string(j) << "\":\"" << ext::string::wstring_to_utf8(t.playing_crossword[i][j]) <<  "\""<< std::endl;
+			}
+			o << std::endl << "			}";
+
+		}
+		o << std::endl <<  "            }" << std::endl;
+		o << "      }" << std::endl;
+		o << "}" << std::endl;
 		o.close();
+
+
+
 	}
 
 	crossword_data_t *getCrosswordLocal(int idx) {
